@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Docs - AshcrestHQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#271e18",
+                        "secondary-container": "#254871",
+                        "secondary": "#a7c9f9",
+                        "on-secondary-fixed-variant": "#254871",
+                        "surface-container-low": "#231a15",
+                        "on-primary": "#532200",
+                        "surface-variant": "#3d322d",
+                        "on-surface-variant": "#dcc1b4",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb68c",
+                        "tertiary-container": "#00a3c6",
+                        "surface-tint": "#ffb68c",
+                        "on-secondary-container": "#96b7e6",
+                        "on-error": "#690005",
+                        "on-surface": "#f1dfd6",
+                        "on-secondary": "#073159",
+                        "on-tertiary-fixed": "#001f28",
+                        "on-primary-container": "#4f2100",
+                        "surface-bright": "#423731",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface-dim": "#1a110d",
+                        "surface-container-highest": "#3d322d",
+                        "tertiary": "#5cd5fa",
+                        "tertiary-fixed": "#b5ebff",
+                        "on-secondary-fixed": "#001c38",
+                        "surface-container-lowest": "#150c08",
+                        "on-background": "#f1dfd6",
+                        "on-tertiary": "#003543",
+                        "on-primary-fixed-variant": "#763400",
+                        "secondary-fixed-dim": "#a7c9f9",
+                        "inverse-on-surface": "#392e29",
+                        "surface-container-high": "#322822",
+                        "primary": "#ffb68c",
+                        "outline": "#a38c80",
+                        "primary-container": "#e07b39",
+                        "inverse-surface": "#f1dfd6",
+                        "secondary-fixed": "#d3e4ff",
+                        "outline-variant": "#554339",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#5cd5fa",
+                        "on-tertiary-container": "#003340",
+                        "surface": "#1a110d",
+                        "on-primary-fixed": "#321200",
+                        "background": "#1a110d",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#ffdbc9",
+                        "inverse-primary": "#9a4601"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "xs": "8px",
+                        "lg": "48px",
+                        "base": "4px",
+                        "xl": "80px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "code-sm": ["JetBrains Mono", "monospace"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "headline-xl": ["Inter", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "code-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0D1117;
+            color: #f1dfd6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .surface-card {
+            background-color: #161B22;
+            border: 1px solid #30363D;
+        }
+        .overlay-card {
+            background-color: #21262D;
+            border: 1px solid #30363D;
+        }
+        .glow-hover:hover {
+            box-shadow: 0px 0px 12px rgba(224, 123, 57, 0.2);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0D1117;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363D;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4A6B96;
+        }
+
+        /* Syntax Highlighting Mock */
+        .token.keyword { color: #5cd5fa; }
+        .token.function { color: #a7c9f9; }
+        .token.string { color: #ffb68c; }
+        .token.comment { color: #554339; }
+        .token.punctuation { color: #a38c80; }
+    </style>
+</head>
+<body class="font-body-md text-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant flat">
+<div class="flex justify-between items-center px-margin py-sm max-w-[1280px] mx-auto">
+<div class="font-headline-lg text-headline-lg font-bold text-primary flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="deployed_code" style="font-variation-settings: 'FILL' 1;">deployed_code</span>
+                AshcrestHQ
+            </div>
+<div class="hidden md:flex items-center gap-md">
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="projects.html">Projects</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 active:scale-95 transition-transform" href="docs.html">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="contribute.html">Contribute</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="community.html">Community</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="team.html">Team</a>
+</div>
+<div class="flex items-center gap-sm">
+<!-- Search Mock -->
+<div class="hidden md:flex items-center bg-[#0D1117] border border-[#4A6B96] rounded px-xs py-base focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all">
+<span class="material-symbols-outlined text-outline text-[18px] mr-xs" data-icon="search">search</span>
+<input class="bg-transparent border-none text-code-sm font-code-sm text-on-surface placeholder:text-outline-variant focus:ring-0 w-48 p-0" placeholder="Search docs (Ctrl+K)" type="text"/>
+</div>
+<button class="bg-primary-container text-[#0D1117] px-sm py-xs rounded font-label-caps text-label-caps uppercase glow-hover transition-all duration-200 active:scale-95">
+                    Get Started
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-margin pt-lg pb-xl flex flex-col gap-lg">
+    <div class="prose prose-invert max-w-4xl mx-auto">
+        <h1 class="font-headline-xl text-headline-xl mb-sm text-primary">Documentation</h1>
+        <p class="text-on-surface-variant font-body-md text-lg mb-lg">
+            Ashcrest HQ is an organisation building open source software for anyone to see how its built, copy, modify and contribute to.
+        </p>
+
+        <h2 class="font-headline-lg text-headline-lg mb-sm mt-xl text-primary">Contributing to AshcrestHQ</h2>
+        <p class="text-on-surface-variant mb-sm">AshcrestHQ is built in the open — every line of Aegis and Janus exists because someone decided to contribute. Whether you're fixing a typo, squashing a bug, or building a whole feature, you're welcome here.</p>
+        
+        <p class="text-on-surface-variant mb-sm">This guide covers how contributing works across all AshcrestHQ projects. Some repos may have additional notes in their own <code>CONTRIBUTING.md</code> — check there for project-specific setup.</p>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Before You Start</h3>
+        <ul class="list-disc pl-sm space-y-xs text-on-surface-variant mb-md">
+            <li>Read our Code of Conduct — we expect respectful, constructive collaboration from everyone.</li>
+            <li>Join the Discord — it's the fastest way to ask questions, find collaborators, and hear about what's being worked on.</li>
+            <li>Not sure where to start? Look for issues tagged <strong><code>good first issue</code></strong> in any repo — these are scoped for newcomers.</li>
+        </ul>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Ways to Contribute</h3>
+        <p class="text-on-surface-variant mb-sm">You don't need to write code to contribute meaningfully.</p>
+        <div class="overflow-x-auto mb-md">
+            <table class="w-full text-left text-on-surface-variant border-collapse border border-[#30363D]">
+                <thead>
+                    <tr class="bg-[#161B22]">
+                        <th class="border border-[#30363D] p-xs font-bold text-on-surface">Type</th>
+                        <th class="border border-[#30363D] p-xs font-bold text-on-surface">What it looks like</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="border border-[#30363D] p-xs font-bold text-on-surface">Code</td><td class="border border-[#30363D] p-xs">Bug fixes, new features, performance improvements</td></tr>
+                    <tr><td class="border border-[#30363D] p-xs font-bold text-on-surface">Documentation</td><td class="border border-[#30363D] p-xs">Improving docs, fixing typos, writing guides or tutorials</td></tr>
+                    <tr><td class="border border-[#30363D] p-xs font-bold text-on-surface">Design</td><td class="border border-[#30363D] p-xs">UI/UX feedback, icons, branding assets</td></tr>
+                    <tr><td class="border border-[#30363D] p-xs font-bold text-on-surface">Bug Reports</td><td class="border border-[#30363D] p-xs">Clear, reproducible issue reports</td></tr>
+                    <tr><td class="border border-[#30363D] p-xs font-bold text-on-surface">Testing</td><td class="border border-[#30363D] p-xs">Trying out new releases and reporting what breaks</td></tr>
+                    <tr><td class="border border-[#30363D] p-xs font-bold text-on-surface">Translation</td><td class="border border-[#30363D] p-xs">Localizing Aegis, Janus, or the website into other languages</td></tr>
+                    <tr><td class="border border-[#30363D] p-xs font-bold text-on-surface">Community</td><td class="border border-[#30363D] p-xs">Helping others in Discord, answering questions, welcoming new members</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Reporting a Bug</h3>
+        <p class="text-on-surface-variant mb-sm">Before opening an issue, search existing issues to avoid duplicates. When you do open one, include:</p>
+        <ol class="list-decimal pl-sm space-y-xs text-on-surface-variant mb-sm">
+            <li><strong>What happened</strong> — a clear, specific description</li>
+            <li><strong>What you expected to happen</strong></li>
+            <li><strong>Steps to reproduce</strong> — as minimal as possible</li>
+            <li><strong>Environment</strong> — OS, version, relevant config</li>
+            <li><strong>Logs or screenshots</strong>, if applicable</li>
+        </ol>
+        <p class="text-on-surface-variant mb-md">Found a <strong>security vulnerability</strong>? Do not open a public issue. See Reporting Security Issues below.</p>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Suggesting a Feature</h3>
+        <p class="text-on-surface-variant mb-sm">Open an issue with the <code>enhancement</code> label and describe:</p>
+        <ul class="list-disc pl-sm space-y-xs text-on-surface-variant mb-sm">
+            <li>The problem you're trying to solve (not just the solution)</li>
+            <li>Any alternatives you've considered</li>
+            <li>Whether you're willing to build it yourself</li>
+        </ul>
+        <p class="text-on-surface-variant mb-md">We'd rather discuss an idea before code is written than review a large PR that doesn't fit the project's direction.</p>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Submitting a Pull Request</h3>
+        <ol class="list-decimal pl-sm space-y-xs text-on-surface-variant mb-sm">
+            <li><strong>Fork</strong> the repository and create a branch off <code>main</code>:<br/><code class="bg-[#161B22] p-1 rounded mt-1 inline-block">git checkout -b fix/short-description</code></li>
+            <li><strong>Make your changes.</strong> Keep PRs focused — one fix or feature per PR is easier to review than five bundled together.</li>
+            <li><strong>Follow the existing code style</strong> in the file you're editing. If the project has a linter or formatter configured, run it before committing.</li>
+            <li><strong>Write clear commit messages</strong> — describe <em>what</em> changed and <em>why</em>, not just <em>what file</em>.</li>
+            <li><strong>Test your changes.</strong> If the project has a test suite, make sure it passes. Add tests for new functionality where it makes sense.</li>
+            <li><strong>Open the PR</strong> against <code>main</code> with:
+                <ul class="list-disc pl-sm mt-1">
+                    <li>A clear title</li>
+                    <li>A description of what changed and why</li>
+                    <li>A link to any related issue (<code>Closes #123</code>)</li>
+                </ul>
+            </li>
+            <li><strong>Respond to review feedback.</strong> A maintainer will review your PR — expect some back-and-forth. This is normal and not a rejection.</li>
+        </ol>
+        <p class="text-on-surface-variant mb-md">Once approved and merged, you'll be recognized as a <strong>Contributor</strong> — including in our Discord, where the role is granted automatically.</p>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Code Style</h3>
+        <ul class="list-disc pl-sm space-y-xs text-on-surface-variant mb-sm">
+            <li>Match the formatting and conventions already used in the file you're editing.</li>
+            <li>Prefer clarity over cleverness. Code is read far more often than it's written.</li>
+            <li>Comment <em>why</em>, not <em>what</em> — the code already says what it does.</li>
+            <li>Keep functions and commits small and single-purpose.</li>
+        </ul>
+        <p class="text-on-surface-variant mb-md">Project-specific style guides (linters, formatters, naming conventions) live in each repo's <code>CONTRIBUTING.md</code> or <code>docs/</code> folder.</p>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Review Process</h3>
+        <ul class="list-disc pl-sm space-y-xs text-on-surface-variant mb-md">
+            <li>PRs are typically reviewed within a few days — larger projects or complex changes may take longer.</li>
+            <li>A <strong>Maintainer</strong> will review, request changes if needed, and merge once it's ready.</li>
+            <li>Don't take review comments personally — they're about the code, aimed at keeping the project solid for everyone who uses it.</li>
+            <li>If your PR goes quiet, a polite ping after a week is completely fine.</li>
+        </ul>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Reporting Security Issues</h3>
+        <p class="text-on-surface-variant mb-sm">If you discover a security vulnerability in any AshcrestHQ project, <strong>do not</strong> open a public issue or discuss it in Discord.</p>
+        <p class="text-on-surface-variant mb-sm">Instead, email <strong><a href="mailto:medhansh5@outlook.com" class="text-primary hover:underline">medhansh5@outlook.com</a></strong> or DM a Maintainer directly with:</p>
+        <ul class="list-disc pl-sm space-y-xs text-on-surface-variant mb-sm">
+            <li>A description of the vulnerability</li>
+            <li>Steps to reproduce</li>
+            <li>Potential impact</li>
+        </ul>
+        <p class="text-on-surface-variant mb-md">We'll respond as quickly as we can and credit you once it's resolved (unless you'd prefer to stay anonymous).</p>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">A Note on AI-Generated Contributions</h3>
+        <p class="text-on-surface-variant mb-sm">AI tools are fine to use, but:</p>
+        <ul class="list-disc pl-sm space-y-xs text-on-surface-variant mb-md">
+            <li>Disclose it in your PR description if a significant portion of the code was AI-generated.</li>
+            <li>Test and understand everything you submit — you're responsible for your PR, not the tool that helped write it.</li>
+            <li>Low-effort, unreviewed AI-generated PRs will be closed.</li>
+        </ul>
+
+        <hr class="border-[#21262D] my-lg" />
+
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs text-primary">Recognition</h3>
+        <p class="text-on-surface-variant mb-sm">Contributors aren't just names in a commit log:</p>
+        <ul class="list-disc pl-sm space-y-xs text-on-surface-variant mb-sm">
+            <li>The <strong>Contributor</strong> role in Discord is granted automatically once your first PR is merged.</li>
+            <li>Active contributors may be invited to join the <strong>Aegis Team</strong> or <strong>Janus Team</strong>, and eventually considered for <strong>Maintainer</strong> status.</li>
+            <li>All contributors are listed on our <a href="team.html" class="text-primary hover:underline">Team page</a>.</li>
+        </ul>
+        
+        <hr class="border-[#21262D] my-lg" />
+        
+        <p class="text-on-surface-variant text-lg font-bold">Questions? Ask in <code>#dev-help</code> on Discord — we're glad to have you here.</p>
+    </div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim w-full py-xl border-t border-outline-variant flat mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin max-w-[1280px] mx-auto gap-md">
+<div class="font-headline-lg text-headline-lg font-bold text-primary flex items-center gap-xs opacity-80 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" data-icon="deployed_code" style="font-variation-settings: 'FILL' 1;">deployed_code</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md text-center md:text-left text-[14px]">
+                Released under the MIT License.
+            </p>
+<div class="flex gap-sm">
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 text-[14px] opacity-80 hover:opacity-100" href="https://github.com/AshcrestHQ">GitHub</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 text-[14px] opacity-80 hover:opacity-100" href="https://discord.gg/35ubQnrzD">Discord</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 text-[14px] opacity-80 hover:opacity-100" href="mailto:medhansh5@outlook.com">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

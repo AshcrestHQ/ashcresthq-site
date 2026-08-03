@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Updates - AshcrestHQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+    :root { --font-geist: 'Inter', sans-serif; }
+    body { font-family: var(--font-geist); }
+
+    .starlight-glow { box-shadow: 0px 0px 12px rgba(224, 123, 57, 0.2); }
+    .starlight-glow:hover { box-shadow: 0px 0px 24px rgba(224, 123, 57, 0.4); }
+
+    .star-dot {
+        width: 3px; height: 3px; background-color: #E07B39; border-radius: 50%;
+        position: absolute; top: 16px; right: 16px; box-shadow: 0 0 4px #E07B39;
+    }
+
+    .skeleton {
+        background: linear-gradient(90deg, #161B22 25%, #1e2530 50%, #161B22 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .feed-item {
+        animation: fadeIn 0.4s ease-out both;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "surface": "#161B22",
+                    "background": "#0D1117",
+                    "primary": "#E07B39",
+                    "slate-blue": "#4A6B96",
+                    "outline-variant": "#30363D",
+                    "on-surface": "#f1dfd6",
+                    "on-surface-variant": "#8b949e"
+                },
+                spacing: { margin: "32px", md: "24px", base: "4px", xs: "8px", lg: "48px", xl: "80px", sm: "16px", gutter: "24px" },
+                fontFamily: {
+                    "body-md": ["var(--font-geist)"],
+                    "label-caps": ["var(--font-geist)"],
+                    "headline-xl": ["var(--font-geist)"],
+                    "headline-lg-mobile": ["var(--font-geist)"],
+                    "headline-lg": ["var(--font-geist)"],
+                    "code-sm": ["JetBrains Mono", "monospace"]
+                },
+                fontSize: {
+                    "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                    "label-caps": ["12px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" }],
+                    "headline-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+                    "headline-lg-mobile": ["24px", { lineHeight: "1.2", fontWeight: "600" }],
+                    "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+                    "code-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }]
+                }
+            }
+        }
+    }
+</script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md relative">
+
+<div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+<div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-slate-blue/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+<header class="bg-background/80 backdrop-blur-[20px] fixed top-0 left-0 w-full z-50 flex justify-between items-center px-xl py-md max-w-[1280px] mx-auto border-b border-outline-variant left-0 right-0">
+    <span class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tighter">AshcrestHQ</span>
+    <nav class="hidden md:flex gap-margin items-center">
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors px-xs py-base rounded" href="projects.html">Projects</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors px-xs py-base rounded" href="contribute.html">Contribute</a>
+        <a class="text-primary font-bold border-b-2 border-primary pb-1" href="updates.html">Updates</a>
+    </nav>
+    <button class="bg-primary text-background font-label-caps text-label-caps px-md py-xs rounded hover:starlight-glow transition-all duration-300">Get Started</button>
+</header>
+
+<main class="flex-grow pt-[120px] pb-xl px-sm md:px-xl max-w-[1280px] mx-auto w-full z-10 relative">
+
+    <section class="mb-lg">
+        <div class="flex items-center gap-xs mb-sm">
+            <span class="material-symbols-outlined text-primary text-sm">bolt</span>
+            <span class="font-label-caps text-label-caps text-primary uppercase">Live from GitHub</span>
+        </div>
+        <h1 class="font-headline-xl text-headline-xl mb-md text-on-surface">Updates</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            A real-time feed of everything happening across AshcrestHQ's repositories — commits, pull requests, issues, and releases, pulled straight from GitHub.
+        </p>
+    </section>
+
+    <!-- Filter bar -->
+    <div class="flex flex-wrap gap-xs mb-lg sticky top-[88px] z-30 bg-background/90 backdrop-blur py-sm">
+        <button data-filter="all" class="filter-btn bg-primary text-background font-label-caps text-label-caps px-md py-xs rounded-full uppercase transition-all">All Activity</button>
+        <button data-filter="release" class="filter-btn bg-surface border border-outline-variant text-on-surface-variant font-label-caps text-label-caps px-md py-xs rounded-full uppercase transition-all hover:border-primary/50">Releases</button>
+        <button data-filter="push" class="filter-btn bg-surface border border-outline-variant text-on-surface-variant font-label-caps text-label-caps px-md py-xs rounded-full uppercase transition-all hover:border-primary/50">Commits</button>
+        <button data-filter="pr" class="filter-btn bg-surface border border-outline-variant text-on-surface-variant font-label-caps text-label-caps px-md py-xs rounded-full uppercase transition-all hover:border-primary/50">Pull Requests</button>
+        <button data-filter="issue" class="filter-btn bg-surface border border-outline-variant text-on-surface-variant font-label-caps text-label-caps px-md py-xs rounded-full uppercase transition-all hover:border-primary/50">Issues</button>
+
+        <div class="ml-auto flex items-center gap-xs">
+            <label for="org-input" class="sr-only">GitHub org</label>
+            <input id="org-input" type="text" value="AshcrestHQ" class="bg-surface border border-outline-variant rounded px-sm py-xs text-body-md text-on-surface w-40 font-code-sm text-code-sm focus:outline-none focus:border-primary" />
+            <button id="reload-btn" class="bg-surface border border-outline-variant hover:border-primary/50 text-on-surface-variant hover:text-primary rounded px-sm py-xs transition-colors" title="Reload">
+                <span class="material-symbols-outlined text-sm">refresh</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Feed -->
+    <div id="feed" class="flex flex-col gap-sm max-w-3xl"></div>
+
+    <!-- Load more -->
+    <div class="flex justify-center mt-lg">
+        <button id="load-more" class="border border-slate-blue text-on-surface bg-transparent font-label-caps text-label-caps px-lg py-sm rounded hover:bg-slate-blue/10 transition-all duration-300 uppercase tracking-wider hidden">
+            Load More
+        </button>
+    </div>
+
+    <!-- Error state -->
+    <div id="error-state" class="hidden max-w-3xl bg-surface border border-outline-variant rounded-xl p-lg text-center">
+        <span class="material-symbols-outlined text-primary text-3xl mb-sm inline-block">cloud_off</span>
+        <p class="text-on-surface font-body-md mb-xs" id="error-message">Couldn't load activity right now.</p>
+        <p class="text-on-surface-variant text-body-md text-sm">GitHub's public API allows 60 requests/hour per visitor without a token. Try again shortly, or check back later.</p>
+    </div>
+
+</main>
+
+<footer class="bg-surface w-full px-xl py-lg flex flex-col md:flex-row justify-between items-center gap-md max-w-[1280px] mx-auto border-t border-outline-variant">
+    <span class="font-label-caps text-label-caps text-on-surface-variant">© 2026 AshcrestHQ. Built for the infinite.</span>
+    <nav class="flex gap-md font-body-md text-body-md">
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/AshcrestHQ">GitHub</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="https://discord.gg/35ubQnrzD">Discord</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="mailto:medhansh5@outlook.com">Contact</a>
+    </nav>
+</footer>
+
+<script>
+(function () {
+    const feedEl = document.getElementById('feed');
+    const loadMoreBtn = document.getElementById('load-more');
+    const errorState = document.getElementById('error-state');
+    const errorMessage = document.getElementById('error-message');
+    const orgInput = document.getElementById('org-input');
+    const reloadBtn = document.getElementById('reload-btn');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    let currentPage = 1;
+    let currentFilter = 'all';
+    let allEvents = [];
+
+    const EVENT_META = {
+        PushEvent: { label: 'pushed to', icon: 'commit', color: '#4A6B96', bg: 'bg-slate-blue/15', text: 'text-slate-blue', group: 'push' },
+        PullRequestEvent: { label: 'pull request', icon: 'call_merge', color: '#E07B39', bg: 'bg-primary/15', text: 'text-primary', group: 'pr' },
+        IssuesEvent: { label: 'issue', icon: 'bug_report', color: '#c9a36a', bg: 'bg-[#c9a36a]/15', text: 'text-[#c9a36a]', group: 'issue' },
+        IssueCommentEvent: { label: 'commented on', icon: 'chat_bubble', color: '#8b949e', bg: 'bg-[#8b949e]/15', text: 'text-on-surface-variant', group: 'issue' },
+        ReleaseEvent: { label: 'released', icon: 'rocket_launch', color: '#E07B39', bg: 'bg-primary/20', text: 'text-primary', group: 'release' },
+        WatchEvent: { label: 'starred', icon: 'star', color: '#c9a36a', bg: 'bg-[#c9a36a]/15', text: 'text-[#c9a36a]', group: 'issue' },
+        ForkEvent: { label: 'forked', icon: 'call_split', color: '#4A6B96', bg: 'bg-slate-blue/15', text: 'text-slate-blue', group: 'push' },
+        CreateEvent: { label: 'created', icon: 'add_circle', color: '#4A6B96', bg: 'bg-slate-blue/15', text: 'text-slate-blue', group: 'push' }
+    };
+
+    function timeAgo(dateStr) {
+        const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
+        const units = [[31536000,'y'],[2592000,'mo'],[604800,'w'],[86400,'d'],[3600,'h'],[60,'m']];
+        for (const [secs, label] of units) {
+            const val = Math.floor(diff / secs);
+            if (val >= 1) return `${val}${label} ago`;
+        }
+        return 'just now';
+    }
+
+    function describeEvent(ev) {
+        const meta = EVENT_META[ev.type];
+        if (!meta) return null;
+        const repo = ev.repo.name.split('/')[1] || ev.repo.name;
+        let title = '';
+        let link = `https://github.com/${ev.repo.name}`;
+        let extra = '';
+
+        if (ev.type === 'PushEvent') {
+            const count = ev.payload.commits ? ev.payload.commits.length : 0;
+            const msg = ev.payload.commits && ev.payload.commits[0] ? ev.payload.commits[0].message.split('\n')[0] : '';
+            title = `Pushed ${count} commit${count === 1 ? '' : 's'} to ${repo}`;
+            extra = msg;
+            if (ev.payload.commits && ev.payload.commits[0]) {
+                link = `https://github.com/${ev.repo.name}/commit/${ev.payload.commits[0].sha}`;
+            }
+        } else if (ev.type === 'PullRequestEvent') {
+            title = `${ev.payload.action === 'closed' && ev.payload.pull_request.merged ? 'Merged' : ev.payload.action} pull request in ${repo}`;
+            extra = `#${ev.payload.number} — ${ev.payload.pull_request.title}`;
+            link = ev.payload.pull_request.html_url;
+        } else if (ev.type === 'IssuesEvent') {
+            title = `${ev.payload.action} an issue in ${repo}`;
+            extra = `#${ev.payload.issue.number} — ${ev.payload.issue.title}`;
+            link = ev.payload.issue.html_url;
+        } else if (ev.type === 'IssueCommentEvent') {
+            title = `Commented on an issue in ${repo}`;
+            extra = ev.payload.issue.title;
+            link = ev.payload.comment.html_url;
+        } else if (ev.type === 'ReleaseEvent') {
+            title = `Released ${ev.payload.release.tag_name} in ${repo}`;
+            extra = ev.payload.release.name || '';
+            link = ev.payload.release.html_url;
+        } else if (ev.type === 'WatchEvent') {
+            title = `Starred ${repo}`;
+            link = `https://github.com/${ev.repo.name}`;
+        } else if (ev.type === 'ForkEvent') {
+            title = `Forked ${repo}`;
+            link = ev.payload.forkee ? ev.payload.forkee.html_url : link;
+        } else if (ev.type === 'CreateEvent') {
+            title = `Created ${ev.payload.ref_type} in ${repo}`;
+            extra = ev.payload.ref || '';
+        }
+
+        return { meta, title, extra, link, actor: ev.actor.login, avatar: ev.actor.avatar_url, time: ev.created_at, group: meta.group };
+    }
+
+    function renderSkeletons(n) {
+        feedEl.innerHTML = Array.from({ length: n }).map(() => `
+            <div class="skeleton h-20 rounded-xl border border-outline-variant"></div>
+        `).join('');
+    }
+
+    function renderFeed() {
+        const items = allEvents
+            .map(describeEvent)
+            .filter(Boolean)
+            .filter(item => currentFilter === 'all' || item.group === currentFilter);
+
+        if (items.length === 0) {
+            feedEl.innerHTML = `
+                <div class="bg-surface border border-outline-variant rounded-xl p-lg text-center">
+                    <span class="material-symbols-outlined text-on-surface-variant text-3xl mb-sm inline-block">inbox</span>
+                    <p class="text-on-surface-variant font-body-md">No activity of this type yet.</p>
+                </div>`;
+            return;
+        }
+
+        feedEl.innerHTML = items.map((item, i) => `
+            <a href="${item.link}" target="_blank" rel="noopener" class="feed-item group flex gap-md bg-surface border border-outline-variant hover:border-primary/40 rounded-xl p-md transition-colors duration-200" style="animation-delay:${Math.min(i * 40, 400)}ms">
+                <div class="w-10 h-10 shrink-0 rounded-full ${item.meta.bg} flex items-center justify-center">
+                    <span class="material-symbols-outlined ${item.meta.text} text-lg">${item.meta.icon}</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between gap-sm mb-1">
+                        <p class="text-on-surface font-body-md font-medium truncate">${escapeHtml(item.title)}</p>
+                        <span class="text-on-surface-variant text-xs font-code-sm shrink-0">${timeAgo(item.time)}</span>
+                    </div>
+                    ${item.extra ? `<p class="text-on-surface-variant text-body-md text-sm truncate">${escapeHtml(item.extra)}</p>` : ''}
+                    <div class="flex items-center gap-1 mt-2">
+                        <img src="${item.avatar}" class="w-4 h-4 rounded-full" alt="" />
+                        <span class="text-on-surface-variant text-xs font-code-sm">${escapeHtml(item.actor)}</span>
+                    </div>
+                </div>
+            </a>
+        `).join('');
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+    }
+
+    async function loadEvents(org, page) {
+        const res = await fetch(`https://api.github.com/orgs/${encodeURIComponent(org)}/events?per_page=30&page=${page}`, {
+            headers: { 'Accept': 'application/vnd.github+json' }
+        });
+        if (!res.ok) {
+            if (res.status === 403) throw new Error('rate-limited');
+            if (res.status === 404) throw new Error('not-found');
+            throw new Error('failed');
+        }
+        return res.json();
+    }
+
+    async function init(reset) {
+        const org = orgInput.value.trim() || 'AshcrestHQ';
+        if (reset) {
+            currentPage = 1;
+            allEvents = [];
+            errorState.classList.add('hidden');
+            renderSkeletons(5);
+        }
+        try {
+            const events = await loadEvents(org, currentPage);
+            if (events.length === 0 && currentPage === 1) {
+                allEvents = [];
+                renderFeed();
+                loadMoreBtn.classList.add('hidden');
+                return;
+            }
+            allEvents = reset ? events : allEvents.concat(events);
+            renderFeed();
+            loadMoreBtn.classList.toggle('hidden', events.length < 30);
+        } catch (err) {
+            errorState.classList.remove('hidden');
+            feedEl.innerHTML = '';
+            loadMoreBtn.classList.add('hidden');
+            if (err.message === 'rate-limited') {
+                errorMessage.textContent = "GitHub's rate limit was hit for this browser session.";
+            } else if (err.message === 'not-found') {
+                errorMessage.textContent = `No org found matching "${org}". Check the name and try again.`;
+            } else {
+                errorMessage.textContent = "Couldn't load activity right now.";
+            }
+        }
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => {
+                b.classList.remove('bg-primary', 'text-background');
+                b.classList.add('bg-surface', 'border', 'border-outline-variant', 'text-on-surface-variant');
+            });
+            btn.classList.add('bg-primary', 'text-background');
+            btn.classList.remove('bg-surface', 'border', 'border-outline-variant', 'text-on-surface-variant');
+            currentFilter = btn.dataset.filter;
+            renderFeed();
+        });
+    });
+
+    loadMoreBtn.addEventListener('click', () => {
+        currentPage += 1;
+        init(false);
+    });
+
+    reloadBtn.addEventListener('click', () => init(true));
+    orgInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') init(true); });
+
+    init(true);
+})();
+</script>
+
+</body>
+</html>

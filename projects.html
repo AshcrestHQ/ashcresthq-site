@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projects | AshcrestHQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#271e18",
+                      "secondary-container": "#254871",
+                      "secondary": "#a7c9f9",
+                      "on-secondary-fixed-variant": "#254871",
+                      "surface-container-low": "#231a15",
+                      "on-primary": "#532200",
+                      "surface-variant": "#3d322d",
+                      "on-surface-variant": "#dcc1b4",
+                      "error-container": "#93000a",
+                      "primary-fixed-dim": "#ffb68c",
+                      "tertiary-container": "#00a3c6",
+                      "surface-tint": "#ffb68c",
+                      "on-secondary-container": "#96b7e6",
+                      "on-error": "#690005",
+                      "on-surface": "#f1dfd6",
+                      "on-secondary": "#073159",
+                      "on-tertiary-fixed": "#001f28",
+                      "on-primary-container": "#4f2100",
+                      "surface-bright": "#423731",
+                      "on-tertiary-fixed-variant": "#004e60",
+                      "surface-dim": "#1a110d",
+                      "surface-container-highest": "#3d322d",
+                      "tertiary": "#5cd5fa",
+                      "tertiary-fixed": "#b5ebff",
+                      "on-secondary-fixed": "#001c38",
+                      "surface-container-lowest": "#150c08",
+                      "on-background": "#f1dfd6",
+                      "on-tertiary": "#003543",
+                      "on-primary-fixed-variant": "#763400",
+                      "secondary-fixed-dim": "#a7c9f9",
+                      "inverse-on-surface": "#392e29",
+                      "surface-container-high": "#322822",
+                      "primary": "#ffb68c",
+                      "outline": "#a38c80",
+                      "primary-container": "#e07b39",
+                      "inverse-surface": "#f1dfd6",
+                      "secondary-fixed": "#d3e4ff",
+                      "outline-variant": "#554339",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#5cd5fa",
+                      "on-tertiary-container": "#003340",
+                      "surface": "#1a110d",
+                      "on-primary-fixed": "#321200",
+                      "background": "#1a110d",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#ffdbc9",
+                      "inverse-primary": "#9a4601"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "16px",
+                      "gutter": "24px",
+                      "margin": "32px",
+                      "xs": "8px",
+                      "lg": "48px",
+                      "base": "4px",
+                      "xl": "80px",
+                      "md": "24px"
+              },
+              "fontFamily": {
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "headline-xl": [
+                              "Geist"
+                      ],
+                      "label-caps": [
+                              "Geist"
+                      ],
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+        
+        body {
+            background-color: #0D1117;
+            color: #f1dfd6;
+        }
+
+        .surface {
+            background-color: #161B22;
+        }
+
+        .border-outline {
+            border-color: #30363D;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 12px rgba(224, 123, 57, 0.2);
+        }
+
+        .starlight-dot {
+            width: 3px;
+            height: 3px;
+            background-color: #E07B39;
+            border-radius: 50%;
+        }
+      </style>
+</head>
+<body class="font-body-md text-body-md min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<header class="bg-background/80 backdrop-blur-xl sticky top-0 w-full z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin py-sm max-w-[1280px] mx-auto">
+<div class="font-headline-lg text-headline-lg font-bold text-primary">AshcrestHQ</div>
+<nav class="hidden md:flex gap-md items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 active:scale-95 transition-transform" href="projects.html">Projects</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="docs.html">Docs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="contribute.html">Contribute</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="community.html">Community</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="team.html">Team</a>
+</nav>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex relative text-on-surface-variant">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-[#0D1117] border border-[#4A6B96] rounded pl-10 pr-4 py-2 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors w-48 text-sm" id="project-search" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-primary-container text-black px-4 py-2 rounded font-label-caps text-label-caps glow-hover transition-all">Get Started</button>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-[1280px] mx-auto w-full px-margin py-xl flex flex-col gap-lg">
+<div class="flex flex-col gap-sm">
+<h1 class="font-headline-xl text-headline-xl text-primary">Projects</h1>
+<p class="text-on-surface-variant max-w-2xl">Explore the core systems, bots, and libraries built by the Ashcrest collective. Designed for the infinite void.</p>
+</div>
+<!-- Filters -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-sm border-b border-[#21262D] pb-sm">
+<div class="flex gap-sm overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+<button class="category-btn active px-4 py-2 rounded bg-secondary-container/20 border border-secondary/30 text-secondary font-label-caps text-label-caps whitespace-nowrap glow-hover" data-category="all">All Projects</button>
+<button class="category-btn px-4 py-2 rounded bg-transparent border border-transparent hover:bg-[#21262D] text-on-surface-variant font-label-caps text-label-caps whitespace-nowrap transition-colors" data-category="Bot">Bots</button>
+<button class="category-btn px-4 py-2 rounded bg-transparent border border-transparent hover:bg-[#21262D] text-on-surface-variant font-label-caps text-label-caps whitespace-nowrap transition-colors" data-category="OS">OS</button>
+<button class="category-btn px-4 py-2 rounded bg-transparent border border-transparent hover:bg-[#21262D] text-on-surface-variant font-label-caps text-label-caps whitespace-nowrap transition-colors" data-category="Tools">Tools</button>
+<button class="category-btn px-4 py-2 rounded bg-transparent border border-transparent hover:bg-[#21262D] text-on-surface-variant font-label-caps text-label-caps whitespace-nowrap transition-colors" data-category="Libraries">Libraries</button>
+</div>
+<div class="relative w-full md:w-64 text-on-surface-variant">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">filter_list</span>
+<input class="w-full bg-[#0D1117] border border-[#4A6B96] rounded pl-10 pr-4 py-2 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors text-sm" id="tech-filter" placeholder="Filter by tech stack..." type="text"/>
+</div>
+</div>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Aegis -->
+<div class="project-card surface border border-outline rounded-lg p-sm flex flex-col gap-sm relative group hover:border-[#4A6B96] transition-colors cursor-pointer" data-name="aegis" data-category="Bot" data-tech="rust postgresql grpc" onclick="window.location.href='https://github.com/AshcrestHQ/aegis'">
+<div class="absolute top-sm right-sm starlight-dot"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Aegis</h3>
+</div>
+<span class="bg-[#4A6B96]/15 text-[#a7c9f9] px-2 py-1 rounded font-code-sm text-code-sm uppercase">Bot</span>
+</div>
+<p class="text-on-surface-variant flex-grow">Advanced automated security protocol and moderation bot for distributed community networks.</p>
+<div class="flex flex-wrap gap-xs mt-auto">
+<span class="bg-[#21262D] text-on-surface px-2 py-1 rounded font-code-sm text-code-sm">Rust</span>
+<span class="bg-[#21262D] text-on-surface px-2 py-1 rounded font-code-sm text-code-sm">PostgreSQL</span>
+<span class="bg-[#21262D] text-on-surface px-2 py-1 rounded font-code-sm text-code-sm">gRPC</span>
+</div>
+<div class="flex justify-between items-center pt-sm border-t border-[#21262D] mt-xs">
+<div class="flex gap-sm text-on-surface-variant font-label-caps text-label-caps">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-primary text-[16px]">star</span> 1.2k</span>
+<span>Updated 2d ago</span>
+</div>
+<div class="flex gap-xs">
+<a class="text-secondary hover:text-white transition-colors" href="docs.html"><span class="material-symbols-outlined">menu_book</span></a>
+<a class="text-secondary hover:text-white transition-colors" href="docs.html"><span class="material-symbols-outlined">code</span></a>
+</div>
+</div>
+</div>
+<!-- Janus -->
+<div class="surface border border-outline rounded-lg p-sm flex flex-col gap-sm relative group hover:border-[#4A6B96] transition-colors">
+<div class="absolute top-sm right-sm starlight-dot"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">developer_board</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Janus</h3>
+</div>
+<span class="bg-[#4A6B96]/15 text-[#a7c9f9] px-2 py-1 rounded font-code-sm text-code-sm uppercase">OS</span>
+</div>
+<p class="text-on-surface-variant flex-grow">A lightweight, deterministic microkernel designed for edge computing and deep-space node redundancy.</p>
+<div class="flex flex-wrap gap-xs mt-auto">
+<span class="bg-[#21262D] text-on-surface px-2 py-1 rounded font-code-sm text-code-sm">C</span>
+<span class="bg-[#21262D] text-on-surface px-2 py-1 rounded font-code-sm text-code-sm">Assembly</span>
+<span class="bg-[#21262D] text-on-surface px-2 py-1 rounded font-code-sm text-code-sm">Wasm</span>
+</div>
+<div class="flex justify-between items-center pt-sm border-t border-[#21262D] mt-xs">
+<div class="flex gap-sm text-on-surface-variant font-label-caps text-label-caps">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-primary text-[16px]">star</span> 3.4k</span>
+<span>Updated 5h ago</span>
+</div>
+<div class="flex gap-xs">
+<a class="text-secondary hover:text-white transition-colors" href="https://github.com/AshcrestHQ"><span class="material-symbols-outlined">menu_book</span></a>
+<a class="text-secondary hover:text-white transition-colors" href="https://github.com/AshcrestHQ"><span class="material-symbols-outlined">code</span></a>
+</div>
+</div>
+</div>
+<!-- Placeholder 1 -->
+<div class="project-card surface border border-outline border-dashed rounded-lg p-sm flex flex-col gap-sm justify-center items-center text-center opacity-60 cursor-pointer" data-name="project helios" data-category="Tools" data-tech="" onclick="window.location.href='https://github.com/AshcrestHQ/helios'">
+<span class="material-symbols-outlined text-on-surface-variant text-[48px]">rocket_launch</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Project Helios</h3>
+<span class="bg-[#21262D] text-on-surface-variant px-3 py-1 rounded font-label-caps text-label-caps uppercase tracking-widest">Coming Soon</span>
+</div>
+
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim w-full py-xl border-t border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin max-w-[1280px] mx-auto gap-sm md:gap-0">
+<div class="font-headline-lg text-headline-lg font-bold text-primary">AshcrestHQ</div>
+<p class="text-on-surface-variant font-body-md text-body-md text-center md:text-left">Released under the MIT License.</p>
+<div class="flex gap-sm">
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="https://github.com/AshcrestHQ">GitHub</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="https://discord.gg/35ubQnrzD">Discord</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="mailto:medhansh5@outlook.com">Contact</a>
+</div>
+</div>
+</footer>
+
+<!-- Project Search and Filter Script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('project-search');
+    const techFilter = document.getElementById('tech-filter');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    let currentCategory = 'all';
+
+    function filterProjects() {
+        const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+        const techTerm = techFilter ? techFilter.value.toLowerCase() : '';
+
+        projectCards.forEach(card => {
+            const name = card.getAttribute('data-name') || '';
+            const tech = card.getAttribute('data-tech') || '';
+            const category = card.getAttribute('data-category') || '';
+
+            const matchesSearch = name.includes(searchTerm);
+            const matchesTech = tech.includes(techTerm);
+            const matchesCategory = currentCategory === 'all' || category === currentCategory;
+
+            if (matchesSearch && matchesTech && matchesCategory) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    if (searchInput) searchInput.addEventListener('input', filterProjects);
+    if (techFilter) techFilter.addEventListener('input', filterProjects);
+
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Update active state
+            categoryBtns.forEach(b => {
+                b.classList.remove('bg-secondary-container/20', 'border-secondary/30', 'text-secondary', 'active');
+                b.classList.add('bg-transparent', 'border-transparent', 'text-on-surface-variant');
+            });
+            
+            e.target.classList.remove('bg-transparent', 'border-transparent', 'text-on-surface-variant');
+            e.target.classList.add('bg-secondary-container/20', 'border-secondary/30', 'text-secondary', 'active');
+
+            currentCategory = e.target.getAttribute('data-category');
+            filterProjects();
+        });
+    });
+});
+</script>
+</body>
+</html>

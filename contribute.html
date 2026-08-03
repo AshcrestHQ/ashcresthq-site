@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contribute - AshcrestHQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#271e18",
+                    "secondary-container": "#254871",
+                    "secondary": "#a7c9f9",
+                    "on-secondary-fixed-variant": "#254871",
+                    "surface-container-low": "#231a15",
+                    "on-primary": "#532200",
+                    "surface-variant": "#3d322d",
+                    "on-surface-variant": "#dcc1b4",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb68c",
+                    "tertiary-container": "#00a3c6",
+                    "surface-tint": "#ffb68c",
+                    "on-secondary-container": "#96b7e6",
+                    "on-error": "#690005",
+                    "on-surface": "#f1dfd6",
+                    "on-secondary": "#073159",
+                    "on-tertiary-fixed": "#001f28",
+                    "on-primary-container": "#4f2100",
+                    "surface-bright": "#423731",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "surface-dim": "#1a110d",
+                    "surface-container-highest": "#3d322d",
+                    "tertiary": "#5cd5fa",
+                    "tertiary-fixed": "#b5ebff",
+                    "on-secondary-fixed": "#001c38",
+                    "surface-container-lowest": "#150c08",
+                    "on-background": "#f1dfd6",
+                    "on-tertiary": "#003543",
+                    "on-primary-fixed-variant": "#763400",
+                    "secondary-fixed-dim": "#a7c9f9",
+                    "inverse-on-surface": "#392e29",
+                    "surface-container-high": "#322822",
+                    "primary": "#ffb68c",
+                    "outline": "#a38c80",
+                    "primary-container": "#e07b39",
+                    "inverse-surface": "#f1dfd6",
+                    "secondary-fixed": "#d3e4ff",
+                    "outline-variant": "#554339",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#5cd5fa",
+                    "on-tertiary-container": "#003340",
+                    "surface": "#1a110d",
+                    "on-primary-fixed": "#321200",
+                    "background": "#1a110d",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#ffdbc9",
+                    "inverse-primary": "#9a4601"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "xs": "8px",
+                    "lg": "48px",
+                    "base": "4px",
+                    "xl": "80px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "code-sm": ["JetBrains Mono"],
+                    "body-md": ["Geist"],
+                    "headline-xl": ["Geist"],
+                    "label-caps": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "headline-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "code-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                    "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                    "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                    "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Cosmic Glow Utility */
+        .starlight-glow:hover {
+            box-shadow: 0 0 12px rgba(224, 123, 57, 0.2);
+        }
+        .star-accent {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 3px;
+            height: 3px;
+            background-color: #E07B39; /* primary-container */
+            border-radius: 50%;
+        }
+        /* Custom scrollbar for terminal/code blocks */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #554339; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a38c80; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-primary-container selection:text-black">
+<!-- TopNavBar (Shared Component) -->
+<nav class="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin py-sm max-w-[1280px] mx-auto">
+<!-- Brand -->
+<a class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" href="index.html">AshcrestHQ</a>
+<!-- Navigation Links (Desktop) -->
+<ul class="hidden md:flex items-center gap-gutter">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html">Home</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="projects.html">Projects</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="docs.html">Docs</a></li>
+<li><a class="text-primary font-bold border-b-2 border-primary pb-1" href="contribute.html">Contribute</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="community.html">Community</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="blog.html">Blog</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="team.html">Team</a></li>
+</ul>
+<!-- Actions -->
+<div class="flex items-center gap-sm">
+<button class="hidden md:flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+<a class="bg-primary-container text-black font-body-md font-semibold px-sm py-xs rounded starlight-glow active:scale-95 transition-all" href="docs.html">Get Started</a>
+</div>
+</div>
+</nav>
+<main class="w-full">
+<!-- Hero Section -->
+<header class="relative px-margin py-xl max-w-[1280px] mx-auto flex flex-col items-center text-center overflow-hidden">
+<!-- Subtle atmospheric glow behind text -->
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-container/10 via-background to-background -z-10 pointer-events-none"></div>
+<div class="inline-flex items-center gap-xs px-3 py-1 mb-md border border-outline-variant rounded-full bg-surface-container/50 backdrop-blur">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Open Source Initiative</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-sm max-w-4xl">
+                Build the Cosmic Void <br/><span class="text-primary">Together.</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-lg">
+                AshcrestHQ is driven by a global collective of engineers, designers, and stargazers. Whether you're squashing bugs or architecting new systems, your code shapes our universe.
+            </p>
+<div class="flex gap-sm">
+<a class="bg-primary-container text-black font-body-md font-semibold px-md py-sm rounded starlight-glow transition-all flex items-center gap-xs" href="#issues">
+<span class="material-symbols-outlined">explore</span>
+                    Browse Issues
+                </a>
+<a class="border border-secondary-container text-on-surface bg-transparent hover:bg-secondary-container/10 font-body-md px-md py-sm rounded transition-all" href="docs.html">
+                    Read Guidelines
+                </a>
+</div>
+</header>
+<!-- 3-Step Guide: Fork, Build, PR -->
+<section class="px-margin py-xl max-w-[1280px] mx-auto border-t border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">route</span>
+                The Development Orbit
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Step 1 -->
+<div class="bg-surface-container border border-outline-variant rounded p-margin relative group starlight-glow transition-all duration-300">
+<div class="star-accent"></div>
+<div class="font-code-sm text-code-sm text-tertiary mb-xs">Phase 01</div>
+<h3 class="font-body-md text-lg font-bold text-on-background mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant">call_split</span>
+                        Fork &amp; Clone
+                    </h3>
+<p class="text-on-surface-variant text-sm mb-md">Create your own independent copy of the repository to begin charting your course without affecting the main telemetry.</p>
+<div class="bg-background border border-outline-variant rounded p-sm overflow-x-auto">
+<code class="font-code-sm text-code-sm text-primary-fixed-dim whitespace-nowrap">
+<span class="text-on-surface-variant opacity-50">$</span> git clone https://github.com/ashcrest/core.git<br/>
+<span class="text-on-surface-variant opacity-50">$</span> cd core
+                        </code>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container border border-outline-variant rounded p-margin relative group starlight-glow transition-all duration-300">
+<div class="star-accent"></div>
+<div class="font-code-sm text-code-sm text-tertiary mb-xs">Phase 02</div>
+<h3 class="font-body-md text-lg font-bold text-on-background mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant">build</span>
+                        Build &amp; Test
+                    </h3>
+<p class="text-on-surface-variant text-sm mb-md">Initialize the local environment. Ensure all thrusters are nominal by running the comprehensive test suite locally.</p>
+<div class="bg-background border border-outline-variant rounded p-sm overflow-x-auto">
+<code class="font-code-sm text-code-sm text-primary-fixed-dim whitespace-nowrap">
+<span class="text-on-surface-variant opacity-50">$</span> pnpm install<br/>
+<span class="text-on-surface-variant opacity-50">$</span> pnpm test --watch
+                        </code>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container border border-outline-variant rounded p-margin relative group starlight-glow transition-all duration-300">
+<div class="star-accent"></div>
+<div class="font-code-sm text-code-sm text-tertiary mb-xs">Phase 03</div>
+<h3 class="font-body-md text-lg font-bold text-on-background mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant">merge</span>
+                        Pull Request
+                    </h3>
+<p class="text-on-surface-variant text-sm mb-md">Submit your trajectory adjustments back to central command. Ensure your PR description clearly outlines the modifications.</p>
+<div class="bg-background border border-outline-variant rounded p-sm overflow-x-auto">
+<code class="font-code-sm text-code-sm text-primary-fixed-dim whitespace-nowrap">
+<span class="text-on-surface-variant opacity-50">$</span> git checkout -b feat/new-module<br/>
+<span class="text-on-surface-variant opacity-50">$</span> gh pr create
+                        </code>
+</div>
+</div>
+</div>
+</section>
+<!-- Ways to Contribute (Bento Grid) -->
+<section class="px-margin py-xl max-w-[1280px] mx-auto border-t border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg mb-xs">Vectors of Contribution</h2>
+<p class="text-on-surface-variant mb-lg max-w-2xl">Code is just one element of our ecosystem. Find the domain that matches your expertise.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-sm md:grid-rows-2 auto-rows-[200px]">
+<!-- Code (Large spanning) -->
+<div class="md:col-span-2 md:row-span-1 bg-surface-container border border-outline-variant rounded p-margin relative starlight-glow transition-all group flex flex-col justify-between overflow-hidden">
+<div class="star-accent"></div>
+<!-- Decorative background element -->
+<div class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[150px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<span class="material-symbols-outlined text-primary text-3xl mb-sm">code</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-xs">Core Engineering</h3>
+<p class="text-on-surface-variant max-w-md">Contribute to the primary rust and typescript codebases. Focus on performance optimization, API surface, and core utilities.</p>
+</div>
+<a class="font-code-sm text-code-sm text-tertiary flex items-center gap-1 group-hover:text-primary transition-colors mt-auto w-fit" href="https://github.com/AshcrestHQ">
+                        View Repository <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Documentation -->
+<div class="bg-surface-container border border-outline-variant rounded p-margin relative starlight-glow transition-all flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary text-3xl mb-sm">menu_book</span>
+<h3 class="font-body-md text-lg font-bold text-on-background mb-xs">Documentation</h3>
+<p class="text-on-surface-variant text-sm">Expand our guides, clarify API references, and improve onboarding tutorials.</p>
+</div>
+<a class="font-code-sm text-code-sm text-secondary flex items-center gap-1 mt-auto w-fit" href="https://github.com/AshcrestHQ">
+                        Edit Docs <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Design -->
+<div class="bg-surface-container border border-outline-variant rounded p-margin relative starlight-glow transition-all flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-sm">brush</span>
+<h3 class="font-body-md text-lg font-bold text-on-background mb-xs">UI/UX Design</h3>
+<p class="text-on-surface-variant text-sm">Help refine the design system, create assets, and improve user workflows.</p>
+</div>
+</div>
+<!-- Bug Reports -->
+<div class="bg-surface-container border border-outline-variant rounded p-margin relative starlight-glow transition-all flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-error text-3xl mb-sm">bug_report</span>
+<h3 class="font-body-md text-lg font-bold text-on-background mb-xs">Bug Reports</h3>
+<p class="text-on-surface-variant text-sm">Identify anomalies in the system. Detailed reproduction steps are highly valued.</p>
+</div>
+</div>
+<!-- Translation -->
+<div class="bg-surface-container border border-outline-variant rounded p-margin relative starlight-glow transition-all flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-tertiary text-3xl mb-sm">translate</span>
+<h3 class="font-body-md text-lg font-bold text-on-background mb-xs">Localization</h3>
+<p class="text-on-surface-variant text-sm">Translate the interface and docs to make AshcrestHQ accessible across the globe.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contribution Guidelines & Good First Issues Split -->
+<section class="px-margin py-xl max-w-[1280px] mx-auto border-t border-outline-variant grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left Col: Guidelines Block -->
+<div class="lg:col-span-5" id="guidelines">
+<div class="sticky top-[100px]">
+<h2 class="font-headline-lg text-headline-lg mb-sm">Protocols &amp; Guidelines</h2>
+<div class="prose prose-invert prose-p:text-on-surface-variant prose-headings:text-on-background prose-a:text-primary max-w-none">
+<p class="mb-md">To maintain structural integrity, all contributions must adhere to our strict cosmic code standards.</p>
+<p class="mb-md">Our full contributing guidelines, including how to report bugs, suggest features, and submit PRs, are available in our documentation.</p>
+<a href="docs.html" class="inline-flex items-center gap-2 bg-primary-container text-black font-body-md font-semibold px-md py-sm rounded starlight-glow transition-all mt-sm">Read the full guidelines <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Right Col: Good First Issues -->
+<div class="lg:col-span-7" id="issues">
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile">Telemetry Board</h2>
+<a class="font-code-sm text-code-sm text-tertiary hover:text-primary transition-colors" href="https://github.com/AshcrestHQ">View All on GitHub →</a>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Issue Card 1 -->
+<div class="bg-surface border border-outline-variant rounded p-sm flex flex-col sm:flex-row gap-sm justify-between items-start sm:items-center hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">adjust</span>
+<span class="font-code-sm text-xs text-on-surface-variant">ashcrest/core #1042</span>
+</div>
+<h4 class="font-body-md font-bold text-on-background group-hover:text-primary transition-colors">Fix memory leak in WebSocket connection pool</h4>
+</div>
+<div class="flex flex-wrap gap-xs shrink-0">
+<span class="font-label-caps text-[10px] px-2 py-1 rounded-full border border-outline-variant bg-surface-container-highest text-on-surface">bug</span>
+<span class="font-label-caps text-[10px] px-2 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">good first issue</span>
+</div>
+</div>
+<!-- Issue Card 2 -->
+<div class="bg-surface border border-outline-variant rounded p-sm flex flex-col sm:flex-row gap-sm justify-between items-start sm:items-center hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">adjust</span>
+<span class="font-code-sm text-xs text-on-surface-variant">ashcrest/docs #89</span>
+</div>
+<h4 class="font-body-md font-bold text-on-background group-hover:text-primary transition-colors">Add deployment guide for Kubernetes</h4>
+</div>
+<div class="flex flex-wrap gap-xs shrink-0">
+<span class="font-label-caps text-[10px] px-2 py-1 rounded-full border border-outline-variant bg-surface-container-highest text-on-surface">documentation</span>
+<span class="font-label-caps text-[10px] px-2 py-1 rounded-full border border-tertiary/30 bg-tertiary/10 text-tertiary">help wanted</span>
+</div>
+</div>
+<!-- Issue Card 3 -->
+<div class="bg-surface border border-outline-variant rounded p-sm flex flex-col sm:flex-row gap-sm justify-between items-start sm:items-center hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">adjust</span>
+<span class="font-code-sm text-xs text-on-surface-variant">ashcrest/cli #301</span>
+</div>
+<h4 class="font-body-md font-bold text-on-background group-hover:text-primary transition-colors">Standardize error output colors in terminal</h4>
+</div>
+<div class="flex flex-wrap gap-xs shrink-0">
+<span class="font-label-caps text-[10px] px-2 py-1 rounded-full border border-outline-variant bg-surface-container-highest text-on-surface">enhancement</span>
+<span class="font-label-caps text-[10px] px-2 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">good first issue</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-xl border-t border-outline-variant bg-surface-dim">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin max-w-[1280px] mx-auto gap-lg md:gap-0">
+<!-- Brand & Copyright -->
+<div class="flex flex-col items-center md:items-start gap-xs">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">AshcrestHQ</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Released under the MIT License.</span>
+</div>
+<!-- Links -->
+<ul class="flex flex-wrap justify-center gap-gutter">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="https://github.com/AshcrestHQ">GitHub</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="https://discord.gg/35ubQnrzD">Discord</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="mailto:medhansh5@outlook.com">Contact</a></li>
+</ul>
+</div>
+</footer>
+</body></html>

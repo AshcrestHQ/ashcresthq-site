@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog - AshcrestHQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#271e18",
+                    "secondary-container": "#254871",
+                    "secondary": "#a7c9f9",
+                    "on-secondary-fixed-variant": "#254871",
+                    "surface-container-low": "#231a15",
+                    "on-primary": "#532200",
+                    "surface-variant": "#3d322d",
+                    "on-surface-variant": "#dcc1b4",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb68c",
+                    "tertiary-container": "#00a3c6",
+                    "surface-tint": "#ffb68c",
+                    "on-secondary-container": "#96b7e6",
+                    "on-error": "#690005",
+                    "on-surface": "#f1dfd6",
+                    "on-secondary": "#073159",
+                    "on-tertiary-fixed": "#001f28",
+                    "on-primary-container": "#4f2100",
+                    "surface-bright": "#423731",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "surface-dim": "#1a110d",
+                    "surface-container-highest": "#3d322d",
+                    "tertiary": "#5cd5fa",
+                    "tertiary-fixed": "#b5ebff",
+                    "on-secondary-fixed": "#001c38",
+                    "surface-container-lowest": "#150c08",
+                    "on-background": "#f1dfd6",
+                    "on-tertiary": "#003543",
+                    "on-primary-fixed-variant": "#763400",
+                    "secondary-fixed-dim": "#a7c9f9",
+                    "inverse-on-surface": "#392e29",
+                    "surface-container-high": "#322822",
+                    "primary": "#ffb68c",
+                    "outline": "#a38c80",
+                    "primary-container": "#e07b39",
+                    "inverse-surface": "#f1dfd6",
+                    "secondary-fixed": "#d3e4ff",
+                    "outline-variant": "#554339",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#5cd5fa",
+                    "on-tertiary-container": "#003340",
+                    "surface": "#1a110d",
+                    "on-primary-fixed": "#321200",
+                    "background": "#1a110d",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#ffdbc9",
+                    "inverse-primary": "#9a4601"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "xs": "8px",
+                    "lg": "48px",
+                    "base": "4px",
+                    "xl": "80px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "code-sm": [
+                            "JetBrains Mono"
+                    ],
+                    "body-md": [
+                            "Geist"
+                    ],
+                    "headline-xl": [
+                            "Geist"
+                    ],
+                    "label-caps": [
+                            "Geist"
+                    ],
+                    "headline-lg-mobile": [
+                            "Geist"
+                    ],
+                    "headline-lg": [
+                            "Geist"
+                    ]
+            },
+            "fontSize": {
+                    "code-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-xl": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0D1117;
+            color: #f1dfd6;
+        }
+        .surface {
+            background-color: #161B22;
+        }
+        .surface-overlay {
+            background-color: #21262D;
+        }
+        .border-subtle {
+            border-color: #30363D;
+        }
+        .glow-amber:hover {
+            box-shadow: 0 0 12px rgba(224, 123, 57, 0.2);
+        }
+        .star-accent {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 3px;
+            height: 3px;
+            background-color: #E07B39;
+            border-radius: 50%;
+        }
+        
+        /* Grid background pattern */
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(48, 54, 61, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(48, 54, 61, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Ambient Background -->
+<div class="fixed inset-0 pointer-events-none z-[-1] bg-grid-pattern">
+<div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-secondary-container/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-primary-container/5 rounded-full blur-[120px]"></div>
+</div>
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant font-body-md text-body-md flat">
+<div class="flex justify-between items-center px-margin py-sm max-w-[1280px] mx-auto">
+<div class="flex items-center gap-gutter">
+<a class="font-headline-lg text-headline-lg font-bold text-primary active:scale-95 transition-transform" href="index.html">AshcrestHQ</a>
+<div class="hidden md:flex gap-sm ml-lg">
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="projects.html">Projects</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="docs.html">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="contribute.html">Contribute</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="community.html">Community</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="team.html">Team</a>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="bg-[#0D1117] border border-[#4A6B96] focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded text-on-surface py-2 pl-10 pr-4 font-code-sm text-code-sm w-64 transition-colors" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-primary-container text-black font-label-caps text-label-caps px-md py-xs rounded hover:shadow-[0_0_12px_rgba(224,123,57,0.2)] transition-shadow">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-margin py-xl relative z-10">
+<!-- Page Header -->
+<header class="mb-lg border-b border-subtle pb-md">
+<h1 class="font-headline-xl text-headline-xl mb-sm">Repository Updates</h1>
+<p class="text-on-surface-variant max-w-2xl">Live stream of development updates directly from GitHub.</p>
+</header>
+
+<section class="mb-xl min-h-[500px]">
+    <div id="github-updates" class="flex flex-col gap-sm">
+        <div class="text-on-surface-variant text-center py-lg animate-pulse">Initializing connection to Github...</div>
+    </div>
+</section>
+
+<!-- Dynamic GitHub Fetch Script -->
+<script>
+async function fetchGithubUpdates() {
+    try {
+        // Here you would typically connect to a Vercel Serverless Function 
+        // that handles the webhook payloads from GitHub and stores them.
+        // For demonstration purposes on a static site, we fetch public events directly from the repo.
+        
+        // Use your organization and repository name
+        const res = await fetch(`https://api.github.com/users/AshcrestHQ/events`);
+        
+        if (!res.ok) {
+            throw new Error(`GitHub API returned ${res.status}`);
+        }
+        
+        const events = await res.json();
+        const container = document.getElementById('github-updates');
+        container.innerHTML = '';
+        
+        // Filter for push events, pull requests, or issues
+        const relevantEvents = events.filter(e => ['PushEvent', 'PullRequestEvent', 'IssuesEvent'].includes(e.type)).slice(0, 10);
+        
+        if (relevantEvents.length === 0) {
+            container.innerHTML = '<div class="text-on-surface-variant text-center py-lg">No recent updates found.</div>';
+            return;
+        }
+
+        relevantEvents.forEach(event => {
+            const date = new Date(event.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+            let title = '';
+            let description = '';
+            let tag = '';
+            
+            if (event.type === 'PushEvent') {
+                tag = 'Commit';
+                title = `Pushed to ${event.payload.ref.replace('refs/heads/', '')}`;
+                description = event.payload.commits.map(c => c.message).join('<br/>');
+            } else if (event.type === 'PullRequestEvent') {
+                tag = 'Pull Request';
+                title = `${event.payload.action} PR #${event.payload.pull_request.number}: ${event.payload.pull_request.title}`;
+                description = event.payload.pull_request.body || 'No description provided.';
+            } else if (event.type === 'IssuesEvent') {
+                tag = 'Issue';
+                title = `${event.payload.action} issue #${event.payload.issue.number}: ${event.payload.issue.title}`;
+                description = event.payload.issue.body || 'No description provided.';
+            }
+            
+            const card = `
+                <article class="surface border border-subtle rounded-lg p-md flex flex-col group glow-amber transition-shadow cursor-pointer relative">
+                    <div class="flex items-center justify-between mb-sm">
+                        <div class="flex items-center gap-xs">
+                            <span class="bg-secondary-container/15 text-secondary font-code-sm text-code-sm px-2 py-1 rounded uppercase text-[10px]">${tag}</span>
+                            <span class="text-on-surface-variant font-code-sm text-code-sm text-[10px]">${date}</span>
+                        </div>
+                        <span class="text-on-surface-variant font-code-sm text-[10px]">by ${event.actor.login}</span>
+                    </div>
+                    <h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-xs group-hover:text-primary transition-colors">${title}</h3>
+                    <p class="text-on-surface-variant text-sm line-clamp-3">${description}</p>
+                </article>
+            `;
+            container.innerHTML += card;
+        });
+        
+    } catch (e) {
+        console.error("Failed to fetch Github updates", e);
+        document.getElementById('github-updates').innerHTML = '<div class="text-error text-center py-lg">Error loading updates from GitHub. Check console for details.</div>';
+    }
+}
+
+fetchGithubUpdates();
+</script>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-dim border-t border-outline-variant font-body-md text-body-md flat mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin max-w-[1280px] mx-auto gap-md">
+<div class="font-headline-lg text-headline-lg font-bold text-primary opacity-80 hover:opacity-100">AshcrestHQ</div>
+<div class="flex gap-gutter">
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="https://github.com/AshcrestHQ">GitHub</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="https://discord.gg/35ubQnrzD">Discord</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100" href="mailto:medhansh5@outlook.com">Contact</a>
+</div>
+<div class="text-on-surface-variant opacity-80 hover:opacity-100">Released under the MIT License.</div>
+</div>
+</footer>
+</body></html>

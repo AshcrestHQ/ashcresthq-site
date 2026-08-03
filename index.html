@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AshcrestHQ - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#271e18",
+                    "secondary-container": "#254871",
+                    "secondary": "#a7c9f9",
+                    "on-secondary-fixed-variant": "#254871",
+                    "surface-container-low": "#231a15",
+                    "on-primary": "#532200",
+                    "surface-variant": "#3d322d",
+                    "on-surface-variant": "#dcc1b4",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb68c",
+                    "tertiary-container": "#00a3c6",
+                    "surface-tint": "#ffb68c",
+                    "on-secondary-container": "#96b7e6",
+                    "on-error": "#690005",
+                    "on-surface": "#f1dfd6",
+                    "on-secondary": "#073159",
+                    "on-tertiary-fixed": "#001f28",
+                    "on-primary-container": "#4f2100",
+                    "surface-bright": "#423731",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "surface-dim": "#1a110d",
+                    "surface-container-highest": "#3d322d",
+                    "tertiary": "#5cd5fa",
+                    "tertiary-fixed": "#b5ebff",
+                    "on-secondary-fixed": "#001c38",
+                    "surface-container-lowest": "#150c08",
+                    "on-background": "#f1dfd6",
+                    "on-tertiary": "#003543",
+                    "on-primary-fixed-variant": "#763400",
+                    "secondary-fixed-dim": "#a7c9f9",
+                    "inverse-on-surface": "#392e29",
+                    "surface-container-high": "#322822",
+                    "primary": "#ffb68c",
+                    "outline": "#a38c80",
+                    "primary-container": "#e07b39",
+                    "inverse-surface": "#f1dfd6",
+                    "secondary-fixed": "#d3e4ff",
+                    "outline-variant": "#554339",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#5cd5fa",
+                    "on-tertiary-container": "#003340",
+                    "surface": "#1a110d",
+                    "on-primary-fixed": "#321200",
+                    "background": "#1a110d",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#ffdbc9",
+                    "inverse-primary": "#9a4601"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "xs": "8px",
+                    "lg": "48px",
+                    "base": "4px",
+                    "xl": "80px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "code-sm": [
+                            "JetBrains Mono",
+                            "monospace"
+                    ],
+                    "body-md": [
+                            "Geist",
+                            "sans-serif"
+                    ],
+                    "headline-xl": [
+                            "Geist",
+                            "sans-serif"
+                    ],
+                    "label-caps": [
+                            "Geist",
+                            "sans-serif"
+                    ],
+                    "headline-lg-mobile": [
+                            "Geist",
+                            "sans-serif"
+                    ],
+                    "headline-lg": [
+                            "Geist",
+                            "sans-serif"
+                    ]
+            },
+            "fontSize": {
+                    "code-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-xl": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+        
+        .starlight-glow:hover {
+            box-shadow: 0 0 12px 0 rgba(224, 123, 57, 0.2);
+        }
+        
+        .card-border {
+            border: 1px solid #30363D;
+        }
+        
+        .bg-obsidian {
+            background-color: #0D1117;
+        }
+        
+        .bg-surface-dark {
+            background-color: #161B22;
+        }
+        
+        .bg-overlay {
+            background-color: #21262D;
+        }
+        
+        .text-amber-accent {
+            color: #E07B39;
+        }
+        
+        .bg-amber-accent {
+            background-color: #E07B39;
+        }
+        
+        .text-slate-blue {
+            color: #4A6B96;
+        }
+        
+        .border-slate-blue {
+            border-color: #4A6B96;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-obsidian/80 backdrop-blur-xl sticky top-0 w-full z-50 border-b border-outline-variant shadow-none">
+<div class="flex justify-between items-center px-margin py-sm max-w-[1280px] mx-auto w-full">
+<div class="font-headline-lg text-headline-lg font-bold text-amber-accent">
+                AshcrestHQ
+            </div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="text-amber-accent font-bold border-b-2 border-amber-accent pb-1 active:scale-95 transition-transform" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-amber-accent transition-colors duration-200 active:scale-95 transition-transform" href="projects.html">Projects</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-amber-accent transition-colors duration-200 active:scale-95 transition-transform" href="docs.html">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-amber-accent transition-colors duration-200 active:scale-95 transition-transform" href="contribute.html">Contribute</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-amber-accent transition-colors duration-200 active:scale-95 transition-transform" href="community.html">Community</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-amber-accent transition-colors duration-200 active:scale-95 transition-transform" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:text-amber-accent transition-colors duration-200 active:scale-95 transition-transform" href="team.html">Team</a>
+</nav>
+<div class="flex items-center gap-sm">
+<!-- Search Icon placeholder for "on_right" -->
+<button class="text-on-surface-variant hover:text-amber-accent transition-colors md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:flex items-center gap-sm border border-slate-blue/30 rounded-xl px-3 py-1.5 bg-surface-dark">
+<span class="material-symbols-outlined text-slate-blue text-sm">search</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant opacity-50">Ctrl K</span>
+</div>
+<button class="hidden md:flex bg-amber-accent text-black font-label-caps text-label-caps px-4 py-2 rounded-lg starlight-glow transition-shadow items-center justify-center">
+                    Get Started
+                </button>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-margin py-xl flex flex-col gap-xl">
+<!-- Hero Section -->
+<section class="flex flex-col items-center justify-center text-center py-xl relative">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-accent/5 via-obsidian to-obsidian -z-10 blur-3xl opacity-50 pointer-events-none"></div>
+<img alt="AshcrestHQ Shield Logo" class="w-48 h-48 md:w-64 md:h-64 object-contain mb-gutter animate-pulse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBCSl-FvfKQXVjNIIHOu14tF4RQ-9aGUTEK6wmECmyUHy68Dn1MRPzv-JLv5Ct44VktMPt5FWT6BaAANB9zXBqq2ZYp-GUhVWQtifHfjTLzcf9zHi3g-OXrX5ofinrUY5kj4HfWouehMTy_Vdh2WDT8SxfQ1AwmrHQAoS3Hz8cqsCD6GZM1wcZ5fUrOwKqzleqo6NJqcj6vWhKqtGE8wRY1erlLupYXzuLFjE-gGJ6fwIKxoFPH_oqTtFEjKFn0Phezg" style="animation-duration: 4s;"/>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-sm max-w-3xl">
+                Open source software, <span class="text-amber-accent">built together</span>.
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-lg">
+                High-performance developer tools forged in the cosmic void. Join a community of engineers pushing the boundaries of infrastructure and collaboration.
+            </p>
+<div class="flex flex-col sm:flex-row gap-sm w-full sm:w-auto">
+<a href="projects.html" class="bg-amber-accent text-black font-label-caps text-label-caps px-8 py-3 rounded-xl starlight-glow transition-all active:scale-95 flex items-center justify-center gap-2">
+                    Explore Projects
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</a>
+<a href="https://github.com/AshcrestHQ" class="bg-transparent border border-slate-blue text-white hover:bg-slate-blue/10 font-label-caps text-label-caps px-8 py-3 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2">
+                    View on GitHub
+                    <span class="material-symbols-outlined">code</span>
+</a>
+</div>
+</section>
+<!-- Featured Projects Preview -->
+<section class="flex flex-col gap-lg relative">
+<div class="flex justify-between items-end border-b border-overlay pb-sm">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Featured Projects</h2>
+<p class="font-code-sm text-code-sm text-slate-blue mt-1">/core-infrastructure</p>
+</div>
+<a class="text-amber-accent font-code-sm text-code-sm hover:underline hidden md:block" href="projects.html">View all projects →</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Aegis Card -->
+<div class="bg-surface-dark card-border rounded-xl p-margin relative group starlight-glow transition-all hover:bg-overlay cursor-pointer flex flex-col h-full" onclick="window.location.href='https://github.com/AshcrestHQ/aegis'">
+<div class="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-amber-accent shadow-[0_0_8px_rgba(224,123,57,0.8)]"></div>
+<div class="flex items-center gap-3 mb-sm">
+<span class="material-symbols-outlined text-amber-accent text-3xl" style="font-variation-settings: 'FILL' 1;">security</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">Aegis</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-gutter">
+                        Universal Discord bot powered by Java 26 Virtual Threads. Engineered for server protection, permission auditing, PostgreSQL community security wiki and more.
+                    </p>
+<div class="flex items-center gap-sm mt-auto">
+<span class="bg-slate-blue/15 text-slate-blue font-label-caps text-label-caps px-2 py-1 rounded">Java</span>
+<span class="bg-slate-blue/15 text-slate-blue font-label-caps text-label-caps px-2 py-1 rounded">Bot</span>
+<div class="flex-grow"></div>
+<div class="flex items-center gap-1 text-on-surface-variant font-code-sm text-code-sm">
+                        </div>
+</div>
+</div>
+<!-- Janus Card -->
+<div class="bg-surface-dark card-border rounded-xl p-margin relative group starlight-glow transition-all hover:bg-overlay cursor-pointer flex flex-col h-full" onclick="window.location.href='https://github.com/AshcrestHQ/janus'">
+<div class="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-amber-accent shadow-[0_0_8px_rgba(224,123,57,0.8)]"></div>
+<div class="flex items-center gap-3 mb-sm">
+<span class="material-symbols-outlined text-tertiary-container text-3xl" style="font-variation-settings: 'FILL' 1;">sync_alt</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">Janus</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-gutter">
+                        A security-first microkernel OS with kernel-enforced capabilities and sandboxed WASM apps, built with zero ambient authority by design.
+                    </p>
+<div class="flex items-center gap-sm mt-auto">
+<span class="bg-slate-blue/15 text-slate-blue font-label-caps text-label-caps px-2 py-1 rounded">Rust</span>
+<span class="bg-slate-blue/15 text-slate-blue font-label-caps text-label-caps px-2 py-1 rounded">OS</span>
+<div class="flex-grow"></div>
+<div class="flex items-center gap-1 text-on-surface-variant font-code-sm text-code-sm">
+                        </div>
+</div>
+</div>
+</div>
+<a class="text-amber-accent font-code-sm text-code-sm text-center mt-sm hover:underline md:hidden" href="projects.html">View all projects →</a>
+</section>
+<!-- Mission & Contribute Bento -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mt-lg">
+<!-- Mission (Spans 7 cols) -->
+<div class="lg:col-span-7 bg-surface-dark card-border rounded-xl p-margin flex flex-col justify-center relative overflow-hidden">
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-amber-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-accent">public</span>
+                    Our Mission
+                </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                    At AshcrestHQ, we believe the tools that shape the future should belong to everyone. We build uncompromising, developer-first infrastructure that powers the next generation of digital experiences.
+                </p>
+<ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-amber-accent text-sm mt-1">lens</span>
+<strong>Open by Design:</strong> Transparency in every commit, design decision, and roadmap item.
+                    </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-amber-accent text-sm mt-1">lens</span>
+<strong>Uncompromising Utility:</strong> Performance and developer experience over decorative vanity.
+                    </li>
+</ul>
+</div>
+<!-- How to Contribute (Spans 5 cols) -->
+<div class="lg:col-span-5 bg-overlay card-border rounded-xl p-margin flex flex-col">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-blue">handshake</span>
+                    Contribute
+                </h2>
+<p class="font-code-sm text-code-sm text-slate-blue mb-sm">/getting-started</p>
+<div class="flex flex-col gap-4 flex-grow">
+<div class="flex items-start gap-3 pb-3 border-b border-[#30363D]">
+<div class="w-6 h-6 rounded-full bg-surface-dark border border-slate-blue flex items-center justify-center font-code-sm text-code-sm text-amber-accent flex-shrink-0 mt-0.5">1</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-1">Find an Issue</h4>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant">Look for 'good first issue' labels on GitHub.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 pb-3 border-b border-[#30363D]">
+<div class="w-6 h-6 rounded-full bg-surface-dark border border-slate-blue flex items-center justify-center font-code-sm text-code-sm text-amber-accent flex-shrink-0 mt-0.5">2</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-1">Fork &amp; Branch</h4>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant">Create your feature branch off main.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-dark border border-slate-blue flex items-center justify-center font-code-sm text-code-sm text-amber-accent flex-shrink-0 mt-0.5">3</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-1">Submit PR</h4>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant">Push your changes and open a pull request.</p>
+</div>
+</div>
+</div>
+<a href="docs.html" class="w-full mt-sm bg-transparent border-none text-slate-blue hover:text-white font-label-caps text-label-caps py-2 transition-colors flex justify-center items-center gap-1 group">
+                    Read Contributor Guide <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim w-full py-xl border-t border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin max-w-[1280px] mx-auto gap-gutter text-center md:text-left">
+<div class="font-headline-lg text-headline-lg font-bold text-amber-accent">
+                AshcrestHQ
+            </div>
+<nav class="flex flex-wrap justify-center gap-gutter items-center">
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100 font-body-md text-body-md" href="https://github.com/AshcrestHQ">GitHub</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100 font-body-md text-body-md" href="https://discord.gg/35ubQnrzD">Discord</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-200 opacity-80 hover:opacity-100 font-body-md text-body-md" href="mailto:medhansh5@outlook.com">Contact</a>
+</nav>
+<div class="text-on-surface-variant opacity-80 font-code-sm text-code-sm">
+                Released under the MIT License.
+            </div>
+</div>
+</footer>
+</body></html>
