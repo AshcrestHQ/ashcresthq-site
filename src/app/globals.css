@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0D1117;
+  --foreground: #C9D1D9;
+  --primary: #E07B39;
+  --primary-hover: #b85b20;
+  --secondary: #4A6B96;
+  --accent: #E07B39;
+  --surface: rgba(33, 38, 45, 0.5);
+  --surface-hover: rgba(48, 54, 61, 0.6);
+  --border: rgba(48, 54, 61, 0.5);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Mesh gradient background simulating liquid space */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(74, 107, 150, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(224, 123, 57, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(74, 107, 150, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(224, 123, 57, 0.1) 0px, transparent 50%);
+  background-attachment: fixed;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism Utilities */
+@utility glass {
+  background: rgba(13, 17, 23, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@utility glass-card {
+  background: linear-gradient(145deg, rgba(33, 38, 45, 0.4) 0%, rgba(13, 17, 23, 0.6) 100%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+@utility glass-button {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+}
