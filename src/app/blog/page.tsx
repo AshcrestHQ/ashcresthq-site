@@ -10,6 +10,7 @@ interface GithubEvent {
   actor: { login: string };
   created_at: string;
   payload: any;
+  repo?: { name: string; url: string; };
 }
 
 export default function Blog() {
@@ -27,6 +28,25 @@ export default function Blog() {
         const relevant = data.filter((e: any) => 
           ['PushEvent', 'PullRequestEvent', 'IssuesEvent'].includes(e.type)
         ).slice(0, 10);
+        
+        // Fetch missing commit details for PushEvents
+        await Promise.all(relevant.map(async (event: any) => {
+          if (event.type === 'PushEvent' && (!event.payload.commits || event.payload.commits.length === 0) && event.payload.head) {
+            try {
+              const commitRes = await fetch(`https://api.github.com/repos/${event.repo.name}/commits/${event.payload.head}`);
+              if (commitRes.ok) {
+                const commitData = await commitRes.json();
+                event.payload.commits = [{
+                  sha: commitData.sha,
+                  message: commitData.commit.message,
+                  url: commitData.html_url
+                }];
+              }
+            } catch (e) {
+              console.error("Failed to fetch commit detail", e);
+            }
+          }
+        }));
         
         setEvents(relevant);
       } catch (err) {
@@ -68,30 +88,47 @@ export default function Blog() {
           const date = new Date(event.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
           
           let title = '';
-          let desc = '';
           let type = '';
           let Icon = GitCommit;
           let color = 'text-primary';
           let bg = 'bg-primary/10';
+          let contentNode = null;
 
           if (event.type === 'PushEvent') {
             type = 'Commit';
-            title = `Pushed to ${event.payload.ref?.replace('refs/heads/', '')}`;
-            desc = event.payload.commits?.map((c: any) => c.message).join(' • ');
+            const branch = event.payload.ref?.replace('refs/heads/', '');
+            const commitCount = event.payload.commits?.length || 0;
+            title = `Pushed ${commitCount} commit${commitCount !== 1 ? 's' : ''} to ${branch}`;
+            
+            contentNode = (
+              <div className="flex flex-col gap-2 mt-3">
+                {event.payload.commits?.slice(0, 3).map((c: any) => (
+                  <div key={c.sha} className="flex items-start gap-3 bg-black/20 rounded-lg p-3 border border-white/5 hover:border-white/10 transition-colors">
+                    <span className="text-primary font-mono text-xs mt-0.5 shrink-0 bg-primary/10 px-1.5 py-0.5 rounded">{c.sha.substring(0, 7)}</span>
+                    <span className="text-gray-300 text-sm leading-tight line-clamp-2">{c.message.split('\\n')[0]}</span>
+                  </div>
+                ))}
+                {commitCount > 3 && (
+                  <div className="text-xs text-gray-500 font-medium pl-1 mt-1">
+                    + {commitCount - 3} more commit{commitCount - 3 !== 1 ? 's' : ''}...
+                  </div>
+                )}
+              </div>
+            );
           } else if (event.type === 'PullRequestEvent') {
             type = 'Pull Request';
             Icon = GitPullRequest;
             color = 'text-blue-400';
             bg = 'bg-blue-500/10';
             title = `${event.payload.action} PR #${event.payload.pull_request?.number}: ${event.payload.pull_request?.title}`;
-            desc = event.payload.pull_request?.body || 'No description provided.';
+            contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.pull_request?.body || 'No description provided.'}</p>;
           } else if (event.type === 'IssuesEvent') {
             type = 'Issue';
             Icon = CircleDot;
             color = 'text-green-400';
             bg = 'bg-green-500/10';
             title = `${event.payload.action} issue #${event.payload.issue?.number}: ${event.payload.issue?.title}`;
-            desc = event.payload.issue?.body || 'No description provided.';
+            contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.issue?.body || 'No description provided.'}</p>;
           }
 
           return (
@@ -101,7 +138,7 @@ export default function Blog() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1 }}
               className="glass-card p-6 rounded-2xl group hover:border-white/20 transition-all cursor-pointer relative overflow-hidden"
-              onClick={() => window.open('https://github.com/AshcrestHQ', '_blank')}
+              onClick={() => window.open(`https://github.com/${event.repo?.name || 'AshcrestHQ'}`, '_blank')}
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -111,10 +148,13 @@ export default function Blog() {
                   </span>
                   <span className="text-xs text-gray-500 font-medium">{date}</span>
                 </div>
-                <span className="text-xs text-gray-400">by {event.actor.login}</span>
+                <div className="flex flex-col items-end">
+                  <span className="text-xs text-gray-400">by {event.actor.login}</span>
+                  {event.repo?.name && <span className="text-[10px] text-gray-600 font-mono mt-1">{event.repo.name.replace('AshcrestHQ/', '')}</span>}
+                </div>
               </div>
               <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{title}</h3>
-              <p className="text-gray-400 text-sm line-clamp-2">{desc}</p>
+              {contentNode}
             </motion.div>
           );
         })}
