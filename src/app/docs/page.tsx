@@ -83,7 +83,7 @@ export default function Docs() {
             <p className="font-semibold text-amber-500 m-0">Do not open a public issue for security vulnerabilities.</p>
           </div>
           <p className="text-gray-400 text-sm mb-4">
-            Instead, email <a href="mailto:medhansh5@outlook.com" className="text-amber-400 hover:underline font-medium">medhansh5@outlook.com</a> or DM a Maintainer directly with:
+            Instead, email <a href="mailto:contact@ashcresthq.dpdns.org" className="text-amber-400 hover:underline font-medium">contact@ashcresthq.dpdns.org</a> or DM a Maintainer directly with:
           </p>
           <ul className="list-disc pl-5 space-y-1 text-sm text-gray-400">
             <li>A description of the vulnerability</li>

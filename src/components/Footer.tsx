@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Code2, MessagesSquare, Mail } from "lucide-react";
+import { Code2, MessagesSquare, Mail, Users } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -19,9 +19,13 @@ export default function Footer() {
             <MessagesSquare className="w-5 h-5" />
             <span>Discord</span>
           </Link>
-          <Link href="mailto:medhansh5@outlook.com" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
+          <Link href="mailto:contact@ashcresthq.dpdns.org" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
             <Mail className="w-5 h-5" />
             <span>Contact</span>
+          </Link>
+          <Link href="https://linkedin.com/company/AshcrestHQ" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
+            <Users className="w-5 h-5" />
+            <span>LinkedIn</span>
           </Link>
         </div>
       </div>
