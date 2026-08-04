@@ -349,7 +349,7 @@ async function fetchCommunityStats() {
 
         // 2. Fetching GitHub stats for 'ashcrest' organization
         try {
-            const githubRes = await fetch('https://api.github.com/users/AshcrestHQhq');
+            const githubRes = await fetch('https://api.github.com/orgs/AshcrestHQ');
             if (githubRes.ok) {
                 const githubData = await githubRes.json();
                 if (githubData.public_repos !== undefined) {

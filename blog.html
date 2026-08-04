@@ -238,7 +238,7 @@ async function fetchGithubUpdates() {
         // For demonstration purposes on a static site, we fetch public events directly from the repo.
         
         // Use your organization and repository name
-        const res = await fetch(`https://api.github.com/users/AshcrestHQ/events`);
+        const res = await fetch(`https://api.github.com/orgs/AshcrestHQ/events`);
         
         if (!res.ok) {
             throw new Error(`GitHub API returned ${res.status}`);
