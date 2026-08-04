@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Search, Filter, Shield, Terminal, Rocket, Code2, BookOpen } from "lucide-react";
 import Link from "next/link";
 
@@ -12,9 +12,8 @@ const PROJECTS = [
     tech: ["Rust", "PostgreSQL", "gRPC"],
     icon: Shield,
     color: "blue",
-    description: "Advanced automated security protocol and moderation bot for distributed community networks.",
+    description: "Our custom moderation bot. We got tired of spam, so we built a zero-tolerance bouncer.",
     link: "https://github.com/AshcrestHQ/aegis",
-    stars: "1.2k",
     updated: "2h ago"
   },
   {
@@ -23,9 +22,8 @@ const PROJECTS = [
     tech: ["TypeScript", "React", "Tailwind"],
     icon: Terminal,
     color: "primary",
-    description: "Next-generation operating environment for high-availability distributed nodes.",
+    description: "The core operating environment. It's fast, it's loud, and it runs everywhere.",
     link: "https://github.com/AshcrestHQ/janus",
-    stars: "840",
     updated: "1d ago"
   },
   {
@@ -34,10 +32,9 @@ const PROJECTS = [
     tech: [],
     icon: Rocket,
     color: "gray",
-    description: "",
+    description: "Something massive is brewing in the dark. We aren't ready to talk about it yet.",
     link: "https://github.com/AshcrestHQ/helios",
-    status: "Coming Soon",
-    stars: "3.4k",
+    status: "REDACTED",
     updated: "5h ago"
   }
 ];
@@ -53,27 +50,31 @@ export default function Projects() {
     const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesTech = p.tech.some(t => t.toLowerCase().includes(techFilter.toLowerCase()));
     const matchesCat = activeCategory === "all" || activeCategory.toLowerCase() === p.category.toLowerCase() + "s";
-    // Slight hack for matching singular/plural for bots/tools
     return matchesSearch && (techFilter === "" || matchesTech) && (activeCategory === "all" || p.category.toLowerCase().startsWith(activeCategory.toLowerCase().slice(0, -1)));
   });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">Projects</h1>
-        <p className="text-gray-400 max-w-2xl">Explore the core systems, bots, and libraries built by the Ashcrest collective.</p>
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ type: "spring", stiffness: 100, damping: 15 }}
+        className="mb-16 mt-8 pl-4 border-l-4 border-primary/50"
+      >
+        <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter">The Arsenal.</h1>
+        <p className="text-xl text-gray-400 max-w-2xl font-medium leading-relaxed">Everything we've built, open sourced, and shipped to production. Poke around.</p>
       </motion.div>
 
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-12 pb-6 border-b border-white/10">
-        <div className="flex gap-2 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-16 pb-8 border-b border-white/5">
+        <div className="flex gap-2 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0 scrollbar-hide">
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat === "All Projects" ? "all" : cat)}
-              className={`px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all ${
+              className={`px-5 py-2.5 rounded-2xl text-sm font-bold whitespace-nowrap transition-all ${
                 (activeCategory === "all" && cat === "All Projects") || activeCategory === cat
-                  ? "bg-primary/20 text-primary border border-primary/30"
-                  : "bg-transparent text-gray-400 hover:bg-white/5 border border-transparent"
+                  ? "bg-primary text-black shadow-[0_5px_15px_rgba(224,123,57,0.3)]"
+                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-transparent"
               }`}
             >
               {cat}
@@ -83,79 +84,86 @@ export default function Projects() {
 
         <div className="flex gap-4 w-full lg:w-auto">
           <div className="relative flex-1 lg:w-64">
-            <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Filter by tech..."
+              placeholder="Tech stack..."
               value={techFilter}
               onChange={(e) => setTechFilter(e.target.value)}
-              className="w-full bg-black/20 border border-white/10 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:border-primary/50 transition-colors"
+              className="w-full bg-black/20 border border-white/10 rounded-2xl pl-10 pr-4 py-3 text-sm font-medium focus:outline-none focus:border-primary/50 transition-all focus:bg-black/40"
             />
           </div>
           <div className="relative flex-1 lg:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="Search repo..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-black/20 border border-white/10 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:border-primary/50 transition-colors"
+              className="w-full bg-black/20 border border-white/10 rounded-2xl pl-10 pr-4 py-3 text-sm font-medium focus:outline-none focus:border-primary/50 transition-all focus:bg-black/40"
             />
           </div>
         </div>
       </div>
 
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProjects.map((project, i) => (
-          <motion.div
-            key={project.name}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: i * 0.1 }}
-            className={`glass-card p-6 rounded-2xl cursor-pointer group flex flex-col relative overflow-hidden ${
-              project.status ? 'border-dashed opacity-60 hover:opacity-100' : ''
-            }`}
-            onClick={() => window.location.href = project.link}
-          >
-            {project.color === 'blue' && <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>}
-            {project.color === 'primary' && <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16"></div>}
-            
-            <div className="flex justify-between items-start mb-4">
-              <div className="flex items-center gap-3">
-                <project.icon className={`w-6 h-6 ${project.color === 'blue' ? 'text-blue-400' : project.color === 'primary' ? 'text-primary' : 'text-gray-400'}`} />
-                <h3 className="text-xl font-bold">{project.name}</h3>
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <AnimatePresence>
+          {filteredProjects.map((project, i) => (
+            <motion.div
+              layout
+              key={project.name}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: -20 }}
+              transition={{ type: "spring", stiffness: 100, damping: 15, delay: i * 0.05 }}
+              whileHover={{ y: -5, scale: 1.02, rotateX: 2 }}
+              style={{ perspective: "1000px" }}
+              className={`glass-card-organic p-8 cursor-pointer group flex flex-col relative overflow-hidden ${
+                project.status ? 'border-dashed border-gray-600/50 opacity-60 hover:opacity-100' : `border-t-${project.color === 'blue' ? 'blue-500' : project.color === 'primary' ? 'primary' : 'gray-400'}/30`
+              }`}
+              onClick={() => window.location.href = project.link}
+            >
+              {project.color === 'blue' && <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/10 rounded-full blur-[50px] -mr-16 -mt-16 group-hover:bg-blue-500/20 transition-all duration-700"></div>}
+              {project.color === 'primary' && <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-[50px] -mr-16 -mt-16 group-hover:bg-primary/20 transition-all duration-700"></div>}
+              
+              <div className="relative z-10 flex justify-between items-start mb-6">
+                <div className="flex items-center gap-4">
+                  <div className={`p-3 rounded-2xl rotate-[-3deg] group-hover:rotate-0 transition-transform ${project.color === 'blue' ? 'bg-blue-500/10' : project.color === 'primary' ? 'bg-primary/10' : 'bg-gray-500/10'}`}>
+                    <project.icon className={`w-6 h-6 ${project.color === 'blue' ? 'text-blue-400' : project.color === 'primary' ? 'text-primary' : 'text-gray-400'}`} />
+                  </div>
+                  <h3 className="text-2xl font-black tracking-tight">{project.name}</h3>
+                </div>
+                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-wider">{project.category}</span>
               </div>
-              <span className="px-2 py-1 bg-white/5 rounded text-xs uppercase tracking-wider">{project.category}</span>
-            </div>
 
-            {project.status ? (
-              <div className="flex-grow flex items-center justify-center">
-                <span className="px-3 py-1 bg-white/10 rounded text-sm uppercase tracking-widest">{project.status}</span>
-              </div>
-            ) : (
-              <p className="text-gray-400 text-sm mb-6 flex-grow">{project.description}</p>
-            )}
+              {project.status ? (
+                <div className="flex-grow flex items-center justify-center relative z-10">
+                  <span className="px-4 py-2 bg-black/40 border border-white/10 rounded-xl text-sm font-black uppercase tracking-widest text-red-400/80">{project.status}</span>
+                </div>
+              ) : (
+                <p className="text-gray-300 text-base mb-8 flex-grow font-medium relative z-10 leading-relaxed">{project.description}</p>
+              )}
 
-            {!project.status && (
-              <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                {project.tech.map(t => (
-                  <span key={t} className="px-2 py-1 bg-black/40 rounded text-xs text-gray-300">{t}</span>
-                ))}
-              </div>
-            )}
+              {!project.status && (
+                <div className="flex flex-wrap gap-2 mb-8 mt-auto relative z-10">
+                  {project.tech.map(t => (
+                    <span key={t} className="px-3 py-1.5 bg-black/30 border border-white/5 rounded-xl text-xs font-bold text-gray-300 shadow-inner">{t}</span>
+                  ))}
+                </div>
+              )}
 
-            <div className="flex justify-between items-center pt-4 border-t border-white/5">
-              <div className="flex gap-4 text-xs text-gray-500 font-medium">
-                <span className="flex items-center gap-1">★ {project.stars}</span>
-                <span>Updated {project.updated}</span>
+              <div className="flex justify-between items-center pt-5 border-t border-white/5 relative z-10">
+                <div className="flex gap-4 text-xs text-gray-500 font-bold uppercase tracking-wider">
+                  <span>Updated {project.updated}</span>
+                </div>
+                <div className="flex gap-3 text-gray-400">
+                  <BookOpen className="w-5 h-5 hover:text-white hover:scale-110 transition-all" />
+                  <Code2 className="w-5 h-5 hover:text-white hover:scale-110 transition-all" />
+                </div>
               </div>
-              <div className="flex gap-2 text-gray-400">
-                <BookOpen className="w-4 h-4 hover:text-white transition-colors" />
-                <Code2 className="w-4 h-4 hover:text-white transition-colors" />
-              </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </motion.div>
     </div>
   );

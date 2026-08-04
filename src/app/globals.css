@@ -27,12 +27,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  /* Mesh gradient background simulating liquid space */
+  /* Asymmetrical, organic mesh gradient simulating space/canvas */
   background-image: 
-    radial-gradient(at 0% 0%, rgba(74, 107, 150, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(224, 123, 57, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(74, 107, 150, 0.1) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(224, 123, 57, 0.1) 0px, transparent 50%);
+    radial-gradient(ellipse at 15% 30%, rgba(74, 107, 150, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% -10%, rgba(224, 123, 57, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 40% 120%, rgba(74, 107, 150, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 95% 80%, rgba(224, 123, 57, 0.12) 0%, transparent 65%);
   background-attachment: fixed;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   min-height: 100vh;
@@ -42,18 +42,23 @@ body {
 
 /* Glassmorphism Utilities */
 @utility glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(40px) saturate(200%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(67px) saturate(160%);
+  -webkit-backdrop-filter: blur(67px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 @utility glass-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(48px) saturate(250%);
-  -webkit-backdrop-filter: blur(48px) saturate(250%);
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 40%, rgba(255,255,255,0.01) 100%);
+  backdrop-filter: blur(80px) saturate(180%);
+  -webkit-backdrop-filter: blur(80px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  border-top-color: rgba(255, 255, 255, 0.35);
+  border-left-color: rgba(255, 255, 255, 0.25);
+  border-radius: 2rem 1.5rem 2.5rem 1rem; /* Asymmetrical border radius */
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 @utility glass-button {
