@@ -26,7 +26,7 @@ export default function Blog() {
         
         const data = await res.json();
         const relevant = data.filter((e: any) => 
-          ['PushEvent', 'PullRequestEvent', 'IssuesEvent'].includes(e.type)
+          ['PushEvent', 'PullRequestEvent', 'IssuesEvent', 'CreateEvent', 'ReleaseEvent'].includes(e.type)
         ).slice(0, 10);
         
         // Fetch missing commit details for PushEvents
@@ -129,6 +129,22 @@ export default function Blog() {
             bg = 'bg-green-500/10';
             title = `${event.payload.action} issue #${event.payload.issue?.number}: ${event.payload.issue?.title}`;
             contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.issue?.body || 'No description provided.'}</p>;
+          } else if (event.type === 'CreateEvent') {
+            type = 'Created';
+            Icon = CircleDot; // or some other icon
+            color = 'text-purple-400';
+            bg = 'bg-purple-500/10';
+            const refType = event.payload.ref_type; // 'repository', 'branch', or 'tag'
+            title = `Created ${refType} ${event.payload.ref || ''}`;
+            if (refType === 'repository') title = 'Created new repository';
+            contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.description || `A new ${refType} was created.`}</p>;
+          } else if (event.type === 'ReleaseEvent') {
+            type = 'Release';
+            Icon = CircleDot;
+            color = 'text-yellow-400';
+            bg = 'bg-yellow-500/10';
+            title = `Published release ${event.payload.release?.name || event.payload.release?.tag_name}`;
+            contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.release?.body || 'No release notes provided.'}</p>;
           }
 
           return (
