@@ -17,7 +17,7 @@ export default function Footer() {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 gap-x-12 gap-y-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-6">
           <div className="flex flex-col gap-4">
             <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-2 opacity-50">Code</h4>
             <Link href="https://github.com/AshcrestHQ" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center gap-3 text-sm font-bold group">
@@ -47,6 +47,16 @@ export default function Footer() {
                 <Users className="w-4 h-4 group-hover:text-[#0A66C2] transition-colors" />
               </div>
               LinkedIn
+            </Link>
+          </div>
+          
+          <div className="flex flex-col gap-4">
+            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-2 opacity-50">Legal</h4>
+            <Link href="/aegis/privacy" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center gap-3 text-sm font-bold group">
+              Privacy Policy
+            </Link>
+            <Link href="/aegis/terms" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center gap-3 text-sm font-bold group">
+              Terms of Service
             </Link>
           </div>
         </div>

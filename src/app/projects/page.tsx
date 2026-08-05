@@ -153,10 +153,19 @@ export default function Projects() {
               )}
 
               <div className="flex justify-between items-center pt-5 border-t border-white/5 relative z-10">
-                <div className="flex gap-4 text-xs text-gray-500 font-bold uppercase tracking-wider">
-                  <span>Updated {project.updated}</span>
+                <div className="flex flex-col gap-3">
+                  <div className="flex gap-4 text-xs text-gray-500 font-bold uppercase tracking-wider">
+                    <span>Updated {project.updated}</span>
+                  </div>
+                  {project.name === 'Aegis' && (
+                    <div className="flex gap-3 text-[10px] font-bold uppercase tracking-wider">
+                      <Link href="/aegis/privacy" className="text-gray-500 hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>Privacy Policy</Link>
+                      <span className="text-gray-700">•</span>
+                      <Link href="/aegis/terms" className="text-gray-500 hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>Terms of Service</Link>
+                    </div>
+                  )}
                 </div>
-                <div className="flex gap-3 text-gray-400">
+                <div className="flex gap-3 text-gray-400 self-end">
                   <BookOpen className="w-5 h-5 hover:text-white hover:scale-110 transition-all" />
                   <Code2 className="w-5 h-5 hover:text-white hover:scale-110 transition-all" />
                 </div>
