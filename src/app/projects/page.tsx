@@ -76,7 +76,7 @@ export default function Projects() {
           timestampsMap = parsed.data;
           setProjects(INITIAL_PROJECTS.map(p => ({
             ...p,
-            updated: timestampsMap[p.repoName || ""] ? timeAgo(timestampsMap[p.repoName]) : p.updated
+            updated: timestampsMap[p.repoName || ""] ? timeAgo(timestampsMap[p.repoName || ""]) : p.updated
           })));
           return;
         }
@@ -106,7 +106,7 @@ export default function Projects() {
       
       setProjects(INITIAL_PROJECTS.map(p => ({
         ...p,
-        updated: timestampsMap[p.repoName || ""] ? timeAgo(timestampsMap[p.repoName]) : p.updated
+        updated: timestampsMap[p.repoName || ""] ? timeAgo(timestampsMap[p.repoName || ""]) : p.updated
       })));
     }
     fetchTimestamps();
