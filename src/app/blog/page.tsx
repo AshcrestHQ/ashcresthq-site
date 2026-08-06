@@ -59,27 +59,32 @@ export default function Blog() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12 border-b border-white/10 pb-8">
-        <h1 className="text-4xl font-bold mb-4">Repository Updates</h1>
-        <p className="text-gray-400">Live stream of development updates directly from GitHub.</p>
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-32">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-20 pl-6 border-l border-primary/30"
+      >
+        <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter text-white">Engineering Log</h1>
+        <p className="text-xl text-gray-400 font-medium leading-loose">Live stream of development updates directly from GitHub.</p>
       </motion.div>
 
-      <div className="flex flex-col gap-6 min-h-[400px]">
+      <div className="flex flex-col gap-12 min-h-[400px]">
         {loading && (
-          <div className="text-center py-20 text-gray-500 animate-pulse">
+          <div className="text-left py-20 text-gray-500 animate-pulse font-medium">
             Initializing connection to GitHub...
           </div>
         )}
         
         {error && (
-          <div className="text-center py-20 text-red-400 bg-red-900/10 rounded-2xl border border-red-500/20">
+          <div className="p-8 text-red-400 bg-red-900/10 rounded-3xl border border-red-500/20 font-medium">
             Error loading updates from GitHub. Please try again later.
           </div>
         )}
 
         {!loading && !error && events.length === 0 && (
-          <div className="text-center py-20 text-gray-500 glass-card rounded-3xl">
+          <div className="p-12 text-gray-500 glass-card-organic text-center font-medium">
             No recent updates found.
           </div>
         )}
@@ -101,15 +106,15 @@ export default function Blog() {
             title = `Pushed ${commitCount} commit${commitCount !== 1 ? 's' : ''} to ${branch}`;
             
             contentNode = (
-              <div className="flex flex-col gap-2 mt-3">
+              <div className="flex flex-col gap-3 mt-6">
                 {event.payload.commits?.slice(0, 3).map((c: any) => (
-                  <div key={c.sha} className="flex items-start gap-3 bg-black/20 rounded-lg p-3 border border-white/5 hover:border-white/10 transition-colors">
-                    <span className="text-primary font-mono text-xs mt-0.5 shrink-0 bg-primary/10 px-1.5 py-0.5 rounded">{c.sha.substring(0, 7)}</span>
-                    <span className="text-gray-300 text-sm leading-tight line-clamp-2">{c.message.split('\\n')[0]}</span>
+                  <div key={c.sha} className="flex items-start gap-4 bg-white/5 rounded-xl p-4 border border-white/5 hover:border-white/10 transition-colors">
+                    <span className="text-primary font-mono text-xs mt-0.5 shrink-0 bg-primary/10 px-2 py-1 rounded-md">{c.sha.substring(0, 7)}</span>
+                    <span className="text-gray-300 text-[15px] leading-relaxed line-clamp-2">{c.message.split('\n')[0]}</span>
                   </div>
                 ))}
                 {commitCount > 3 && (
-                  <div className="text-xs text-gray-500 font-medium pl-1 mt-1">
+                  <div className="text-xs text-gray-500 font-bold pl-2 mt-2 uppercase tracking-widest">
                     + {commitCount - 3} more commit{commitCount - 3 !== 1 ? 's' : ''}...
                   </div>
                 )}
@@ -121,14 +126,14 @@ export default function Blog() {
             color = 'text-blue-400';
             bg = 'bg-blue-500/10';
             title = `${event.payload.action} PR #${event.payload.pull_request?.number}: ${event.payload.pull_request?.title}`;
-            contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.pull_request?.body || 'No description provided.'}</p>;
+            contentNode = <p className="text-gray-400 text-[15px] leading-loose mt-4">{event.payload.pull_request?.body || 'No description provided.'}</p>;
           } else if (event.type === 'IssuesEvent') {
             type = 'Issue';
             Icon = CircleDot;
             color = 'text-green-400';
             bg = 'bg-green-500/10';
             title = `${event.payload.action} issue #${event.payload.issue?.number}: ${event.payload.issue?.title}`;
-            contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.issue?.body || 'No description provided.'}</p>;
+            contentNode = <p className="text-gray-400 text-[15px] leading-loose mt-4">{event.payload.issue?.body || 'No description provided.'}</p>;
           } else if (event.type === 'CreateEvent') {
             type = 'Created';
             Icon = CircleDot; // or some other icon
@@ -137,39 +142,41 @@ export default function Blog() {
             const refType = event.payload.ref_type; // 'repository', 'branch', or 'tag'
             title = `Created ${refType} ${event.payload.ref || ''}`;
             if (refType === 'repository') title = 'Created new repository';
-            contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.description || `A new ${refType} was created.`}</p>;
+            contentNode = <p className="text-gray-400 text-[15px] leading-loose mt-4">{event.payload.description || `A new ${refType} was created.`}</p>;
           } else if (event.type === 'ReleaseEvent') {
             type = 'Release';
             Icon = CircleDot;
             color = 'text-yellow-400';
             bg = 'bg-yellow-500/10';
             title = `Published release ${event.payload.release?.name || event.payload.release?.tag_name}`;
-            contentNode = <p className="text-gray-400 text-sm line-clamp-2">{event.payload.release?.body || 'No release notes provided.'}</p>;
+            contentNode = <p className="text-gray-400 text-[15px] leading-loose mt-4">{event.payload.release?.body || 'No release notes provided.'}</p>;
           }
+
+          const isOffset = i % 2 !== 0;
 
           return (
             <motion.div
               key={event.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-card p-6 rounded-2xl group hover:border-white/20 transition-all cursor-pointer relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+              className={`glass-card-organic p-8 md:p-12 group hover:border-white/20 transition-all cursor-pointer relative overflow-hidden ${isOffset ? 'md:ml-12' : 'md:mr-12'}`}
               onClick={() => window.open(`https://github.com/${event.repo?.name || 'AshcrestHQ'}`, '_blank')}
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <span className={`px-2 py-1 rounded text-xs font-semibold uppercase tracking-wider flex items-center gap-1 ${color} ${bg}`}>
-                    <Icon className="w-3 h-3" />
+              <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/5">
+                <div className="flex items-center gap-4">
+                  <span className={`px-3 py-1.5 rounded-md text-[11px] font-bold uppercase tracking-widest flex items-center gap-2 ${color} ${bg}`}>
+                    <Icon className="w-4 h-4" />
                     {type}
                   </span>
-                  <span className="text-xs text-gray-500 font-medium">{date}</span>
+                  <span className="text-xs text-gray-500 font-bold uppercase tracking-widest">{date}</span>
                 </div>
                 <div className="flex flex-col items-end">
-                  <span className="text-xs text-gray-400">by {event.actor.login}</span>
-                  {event.repo?.name && <span className="text-[10px] text-gray-600 font-mono mt-1">{event.repo.name.replace('AshcrestHQ/', '')}</span>}
+                  <span className="text-xs text-gray-400 font-medium">by {event.actor.login}</span>
+                  {event.repo?.name && <span className="text-[10px] text-gray-500 font-mono mt-1 font-bold">{event.repo.name.replace('AshcrestHQ/', '')}</span>}
                 </div>
               </div>
-              <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{title}</h3>
+              <h3 className="text-2xl font-black mb-2 text-white group-hover:text-primary transition-colors tracking-tight">{title}</h3>
               {contentNode}
             </motion.div>
           );
