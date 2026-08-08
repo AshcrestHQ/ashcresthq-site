@@ -1,4 +1,10 @@
 import { Shield } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service — Aegis",
+  description: "Terms of Service for Aegis, AshcrestHQ's zero-tolerance moderation bot.",
+};
 
 export default function TermsOfService() {
   return (

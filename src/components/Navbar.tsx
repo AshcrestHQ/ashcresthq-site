@@ -26,7 +26,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50 px-4 py-6 md:px-8 pointer-events-none"
     >
-      <nav className="max-w-6xl mx-auto backdrop-blur-[40px] bg-black/40 px-8 py-4 rounded-3xl pointer-events-auto border border-white/10 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
+      <nav className="max-w-6xl mx-auto backdrop-blur-[60px] bg-black/50 px-8 py-4 rounded-3xl pointer-events-auto border border-white/10 border-t-white/20 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-10">
             <Link href="/" className="font-black text-2xl tracking-tighter text-white hover:text-primary transition-colors flex items-center gap-2 group">
@@ -83,7 +83,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
               className="md:hidden mt-6 pt-6 border-t border-white/10 overflow-hidden"
             >
               <div className="flex flex-col gap-2">

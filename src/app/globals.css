@@ -39,12 +39,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.05;
+  font-optical-sizing: auto;
 }
 
 p, li, blockquote {
   text-wrap: pretty;
-  line-height: 1.8;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
 }
 
 /* Glassmorphism Utilities */
@@ -53,6 +55,7 @@ p, li, blockquote {
   backdrop-filter: blur(40px) saturate(120%);
   -webkit-backdrop-filter: blur(40px) saturate(120%);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 @utility glass-card-organic {
@@ -60,27 +63,42 @@ p, li, blockquote {
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top-color: rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1.5rem;
   box-shadow: 
     0 10px 40px -10px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Removed CSS transition for transform to allow Framer Motion springs to handle interruptible animation */
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.5s ease, border-color 0.5s ease;
 }
 
 @utility glass-button {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  /* Removed CSS transition for transform to allow Framer Motion springs to handle interruptible animation */
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease;
   
   &:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-1px);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
   }
+}
 
-  &:active {
-    transform: translateY(1px) scale(0.98);
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass, .glass-card-organic, .glass-button {
+    background: var(--background) !important;
+    backdrop-filter: none !important;
   }
 }

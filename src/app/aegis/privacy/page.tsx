@@ -1,4 +1,10 @@
 import { Shield } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy — Aegis",
+  description: "Privacy Policy for Aegis, AshcrestHQ's zero-tolerance moderation bot.",
+};
 
 export default function PrivacyPolicy() {
   return (

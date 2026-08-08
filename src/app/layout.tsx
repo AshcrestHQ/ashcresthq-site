@@ -8,8 +8,14 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "AshcrestHQ",
-  description: "High-performance developer tools forged in the cosmic void.",
+  metadataBase: new URL("https://ashcresthq.dpdns.org"),
+  title: { default: "AshcrestHQ", template: "%s | AshcrestHQ" },
+  description: "Open source software, built together. High-performance developer tools forged in the cosmic void.",
+  openGraph: {
+    type: "website",
+    siteName: "AshcrestHQ",
+    images: ["/ashcresthq-logo.png"]
+  }
 };
 
 export default function RootLayout({

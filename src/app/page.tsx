@@ -20,7 +20,7 @@ export default function Home() {
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+      transition: { type: "spring", bounce: 0, duration: 0.6 } 
     },
   };
 
@@ -83,7 +83,10 @@ export default function Home() {
           {/* Aegis Card */}
           <motion.div 
             variants={itemVariants} 
-            className="w-full glass-card-organic p-10 md:p-12 group cursor-pointer border-t-blue-500/20 relative overflow-hidden flex flex-col justify-between" 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+            className="w-full glass-card-organic p-6 md:p-12 group cursor-pointer border-t-blue-500/20 relative overflow-hidden flex flex-col justify-between" 
             onClick={() => window.location.href='https://github.com/AshcrestHQ/aegis'}
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
@@ -107,7 +110,10 @@ export default function Home() {
           {/* Janus Card - Offset vertically */}
           <motion.div 
             variants={itemVariants} 
-            className="w-full glass-card-organic p-10 md:p-12 group cursor-pointer border-t-primary/20 relative overflow-hidden flex flex-col justify-between md:mt-32" 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+            className="w-full glass-card-organic p-6 md:p-12 group cursor-pointer border-t-primary/20 relative overflow-hidden flex flex-col justify-between md:mt-32" 
             onClick={() => window.location.href='https://github.com/AshcrestHQ/janus'}
           >
             <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[60px] -mr-16 -mb-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
@@ -130,7 +136,10 @@ export default function Home() {
           {/* Holocron Card - Offset vertically differently */}
           <motion.div 
             variants={itemVariants} 
-            className="w-full glass-card-organic p-10 md:p-12 group cursor-pointer border-t-purple-500/20 relative overflow-hidden flex flex-col justify-between md:mt-16" 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+            className="w-full glass-card-organic p-6 md:p-12 group cursor-pointer border-t-purple-500/20 relative overflow-hidden flex flex-col justify-between md:mt-16" 
             onClick={() => window.location.href='https://github.com/AshcrestHQ/holocron'}
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[60px] -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
@@ -160,7 +169,7 @@ export default function Home() {
         viewport={{ once: true }}
         variants={containerVariants}
       >
-        <motion.div variants={itemVariants} className="glass-card-organic p-16 md:p-24 text-center relative overflow-hidden flex flex-col items-center border border-white/5">
+        <motion.div variants={itemVariants} className="glass-card-organic p-8 md:p-16 lg:p-24 text-center relative overflow-hidden flex flex-col items-center border border-white/5">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-transparent pointer-events-none"></div>
           
           <h2 className="text-4xl md:text-5xl font-black mb-8 relative z-10 tracking-tighter text-white">Come build with us.</h2>

@@ -136,7 +136,9 @@ export default function Projects() {
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-20 pb-8 border-b border-white/10">
         <div className="flex gap-4 overflow-x-auto w-full lg:w-auto pb-4 lg:pb-0 scrollbar-hide">
           {categories.map(cat => (
-            <button
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
               key={cat}
               onClick={() => setActiveCategory(cat === "All Projects" ? "all" : cat)}
               className={`px-6 py-3 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors ${
@@ -146,7 +148,7 @@ export default function Projects() {
               }`}
             >
               {cat}
-            </button>
+            </motion.button>
           ))}
         </div>
 
@@ -180,11 +182,13 @@ export default function Projects() {
             <motion.div
               layout
               key={project.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
-              className={`glass-card-organic p-10 cursor-pointer group flex flex-col relative overflow-hidden break-inside-avoid ${
+              whileHover={{ scale: 1.02, y: -4 }}
+              whileTap={{ scale: 0.98, y: 0 }}
+              transition={{ type: "spring", bounce: 0.2, duration: 0.5, delay: i * 0.05 }}
+              className={`glass-card-organic p-6 md:p-10 cursor-pointer group flex flex-col relative overflow-hidden break-inside-avoid ${
                 project.status ? 'border-dashed border-gray-600/30 opacity-60 hover:opacity-100' : `border-t-${project.color === 'blue' ? 'blue-500' : project.color === 'primary' ? 'primary' : 'gray-400'}/20`
               }`}
               onClick={() => window.location.href = project.link}
