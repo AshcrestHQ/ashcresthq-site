@@ -66,7 +66,7 @@ export default function Home() {
 
       {/* Featured Projects Offset Grid */}
       <motion.section 
-        className="w-full py-40 relative"
+        className="w-full py-20 relative"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -163,7 +163,7 @@ export default function Home() {
 
       {/* Join Community CTA */}
       <motion.section 
-        className="w-full max-w-4xl mx-auto py-40"
+        className="w-full max-w-4xl mx-auto py-20 mb-20"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
