@@ -1,6 +1,8 @@
 {
-  "name": "temp-app",
-  "version": "0.1.0",
+  "name": "ashcresthq-site",
+  "version": "1.0.0",
+  "description": "Official website of AshcrestHQ - open source collective building Janus, Aegis, and Holocron.",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Server, Users, Code2, Mail, Palette, Terminal } from "lucide-react";
+import { Server, Code2, Mail, Palette, Terminal } from "lucide-react";
 import Link from "next/link";
 
 const TEAM = [
@@ -51,7 +51,6 @@ export default function Team() {
             className="glass-card p-8 rounded-3xl relative group flex flex-col"
           >
             <div className="w-20 h-20 rounded-full mb-6 overflow-hidden border-2 border-primary/20 group-hover:border-primary transition-colors mx-auto">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={member.avatar} alt={member.name} className="w-full h-full object-cover" />
             </div>
             

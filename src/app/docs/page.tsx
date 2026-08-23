@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, Terminal, Code2, AlertTriangle, ArrowRight, Rocket } from "lucide-react";
+import { BookOpen, Code2, AlertTriangle, ArrowRight, Rocket } from "lucide-react";
 import Link from "next/link";
 
 export default function Docs() {
@@ -89,7 +89,7 @@ export default function Docs() {
             { title: "Documentation", desc: "If you'd rather write words than code, these docs need it too. If something here confused you, that's useful information, tell us or fix it yourself.", delay: 0.05 },
             { title: "Design & UI", desc: "If you have an eye for how things look and feel, both Aegis's interactions and the website itself could always use a second pair of eyes on the design side.", delay: 0.1 },
             { title: "Translation", desc: "Aegis, Janus, and Holocron are all English only right now, which means there's a lot of people out there who can't easily use any of it. Translation work matters more than people usually give it credit for.", delay: 0.15 }
-          ].map((item, i) => (
+          ].map((item) => (
             <motion.div 
               key={item.title}
               initial={{ opacity: 0, y: 20 }}

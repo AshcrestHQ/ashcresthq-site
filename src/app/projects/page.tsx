@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Filter, Shield, Terminal, Rocket, Code2, BookOpen } from "lucide-react";
+import { Search, Filter, Shield, Terminal, Code2, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { timeAgo } from "@/lib/timeAgo";
 
@@ -118,7 +118,7 @@ export default function Projects() {
     const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesTech = p.tech.some(t => t.toLowerCase().includes(techFilter.toLowerCase()));
     const matchesCat = activeCategory === "all" || activeCategory.toLowerCase() === p.category.toLowerCase() + "s";
-    return matchesSearch && (techFilter === "" || matchesTech) && (activeCategory === "all" || p.category.toLowerCase().startsWith(activeCategory.toLowerCase().slice(0, -1)));
+    return matchesSearch && (techFilter === "" || matchesTech) && matchesCat;
   });
 
   return (

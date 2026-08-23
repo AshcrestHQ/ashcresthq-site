@@ -49,7 +49,7 @@ export default function Blog() {
         }));
         
         setEvents(relevant);
-      } catch (err) {
+      } catch {
         setError(true);
       } finally {
         setLoading(false);
