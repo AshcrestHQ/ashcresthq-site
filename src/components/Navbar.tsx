@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Rocket, Shield, BookOpen, Users, Radio, Users2, Menu, X } from "lucide-react";
+import { Rocket, Shield, BookOpen, Users, Radio, Users2, Menu, X, GitBranch } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,30 +24,31 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 px-4 py-6 md:px-8 pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-50 px-4 py-5 md:px-8 pointer-events-none"
     >
-      <nav className="max-w-6xl mx-auto backdrop-blur-[60px] bg-black/50 px-8 py-4 rounded-3xl pointer-events-auto border border-white/10 border-t-white/20 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
+      <nav className="max-w-6xl mx-auto backdrop-blur-[60px] bg-black/60 px-6 py-3.5 rounded-3xl pointer-events-auto border border-white/10 border-t-white/20 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)]">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-10">
-            <Link href="/" className="font-black text-2xl tracking-tighter text-white hover:text-primary transition-colors flex items-center gap-2 group">
-              <img src="/ashcresthq-logo.png" alt="AshcrestHQ Logo" className="w-8 h-8 object-contain" />
-              AshcrestHQ
+          <div className="flex items-center gap-8">
+            <Link href="/" className="font-black text-xl tracking-tighter text-white hover:text-primary transition-colors flex items-center gap-2.5 group">
+              <img src="/ashcresthq-logo.png" alt="AshcrestHQ Logo" className="w-7 h-7 object-contain" />
+              <span>AshcrestHQ</span>
             </Link>
-            <div className="hidden md:flex items-center gap-4">
+
+            <div className="hidden md:flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/5">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-[13px] font-medium tracking-wide transition-all px-2 py-1 relative group ${
-                    pathname === link.href ? "text-primary" : "text-gray-400 hover:text-white"
+                  className={`text-[12px] font-bold tracking-wide transition-all px-4 py-1.5 rounded-full relative ${
+                    pathname === link.href ? "text-black font-extrabold" : "text-gray-400 hover:text-white"
                   }`}
                 >
                   <span className="relative z-10">{link.label}</span>
                   {pathname === link.href && (
                     <motion.div 
                       layoutId="navIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full opacity-80"
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      className="absolute inset-0 bg-primary rounded-full shadow-md shadow-primary/20"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                     />
                   )}
                 </Link>
@@ -55,18 +56,20 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
-            <div className="hidden md:flex relative group">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary transition-colors" />
-              <input
-                type="text"
-                placeholder="Search..."
-                className="bg-white/5 border border-white/10 rounded-xl pl-9 pr-4 py-2 text-sm focus:outline-none focus:border-primary/40 focus:bg-white/10 transition-all w-48 focus:w-64 placeholder-gray-500 text-white"
-              />
-            </div>
-            <Link href="/docs" className="hidden md:flex items-center gap-2 bg-primary/10 text-primary hover:bg-primary/20 text-[13px] font-bold px-6 py-2.5 rounded-xl transition-colors">
+          <div className="flex items-center gap-4">
+            <Link 
+              href="https://github.com/AshcrestHQ" 
+              target="_blank"
+              className="hidden sm:flex items-center gap-2 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white text-xs font-mono font-bold px-4 py-2 rounded-full border border-white/10 transition-all"
+            >
+              <GitBranch className="w-3.5 h-3.5 text-primary" />
+              <span>GitHub Org</span>
+            </Link>
+
+            <Link href="/docs" className="hidden md:flex items-center gap-2 bg-primary text-black hover:bg-primary-hover text-[12px] font-bold px-5 py-2 rounded-full transition-all shadow-md shadow-primary/20">
               Get Started
             </Link>
+
             <button 
               className="md:hidden p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
               onClick={() => setIsOpen(!isOpen)}
@@ -84,7 +87,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-              className="md:hidden mt-6 pt-6 border-t border-white/10 overflow-hidden"
+              className="md:hidden mt-4 pt-4 border-t border-white/10 overflow-hidden"
             >
               <div className="flex flex-col gap-2">
                 {links.map((link) => (
@@ -92,8 +95,8 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center gap-4 text-sm font-medium transition-colors p-4 rounded-2xl ${
-                      pathname === link.href ? "bg-primary/10 text-primary" : "text-gray-400 hover:text-white hover:bg-white/5"
+                    className={`flex items-center gap-4 text-sm font-medium transition-colors p-3.5 rounded-2xl ${
+                      pathname === link.href ? "bg-primary/10 text-primary font-bold" : "text-gray-400 hover:text-white hover:bg-white/5"
                     }`}
                   >
                     <div className={`p-2 rounded-xl ${pathname === link.href ? 'bg-primary/20' : 'bg-white/5'}`}>
@@ -102,20 +105,14 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <div className="relative mt-4">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-4 text-sm focus:outline-none focus:border-primary/40 text-white"
-                  />
-                </div>
+                
                 <Link 
-                  href="/docs" 
-                  onClick={() => setIsOpen(false)}
-                  className="bg-primary/10 text-center text-primary hover:bg-primary/20 text-sm font-bold px-5 py-4 rounded-xl mt-4 transition-colors"
+                  href="https://github.com/AshcrestHQ"
+                  target="_blank"
+                  className="flex items-center justify-center gap-2 bg-white/5 text-gray-300 text-xs font-mono font-bold px-5 py-3 rounded-xl mt-2 border border-white/10"
                 >
-                  Get Started Now
+                  <GitBranch className="w-4 h-4 text-primary" />
+                  <span>GitHub Organization</span>
                 </Link>
               </div>
             </motion.div>

@@ -33,15 +33,15 @@ const TEAM = [
 
 export default function Team() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center max-w-3xl mx-auto mb-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center max-w-3xl mx-auto mb-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">The Collective</h1>
         <p className="text-lg text-gray-400 leading-relaxed">
           AshcrestHQ is maintained by a small, dedicated team of engineers distributed across the globe, united by a passion for high-performance open-source tools.
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         {TEAM.map((member, i) => (
           <motion.div 
             key={member.name}

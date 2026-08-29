@@ -2,149 +2,258 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Filter, Shield, Terminal, Code2, BookOpen } from "lucide-react";
+import { 
+  Search, 
+  Filter, 
+  Shield, 
+  Terminal, 
+  Cpu, 
+  Eye, 
+  Sparkles, 
+  Monitor, 
+  Tv,
+  Star,
+  GitFork,
+  ExternalLink,
+  ArrowUpRight,
+  Copy,
+  Check,
+  RotateCcw
+} from "lucide-react";
 import Link from "next/link";
 import { timeAgo } from "@/lib/timeAgo";
 
 type Project = {
   name: string;
-  repoName?: string;
-  category: string;
+  repoName: string;
+  category: "OS & Microkernels" | "Security & Privacy" | "AI & Vision" | "DevTools & CLI" | "Web & Games";
   tech: string[];
   icon: any;
   color: string;
+  accentBg: string;
   description: string;
   link: string;
   updated: string;
-  status?: string;
+  stars?: number;
+  forks?: number;
   install?: string;
+  featured?: boolean;
 };
 
 const INITIAL_PROJECTS: Project[] = [
   {
+    name: "Blindside",
+    repoName: "Blindside",
+    category: "Security & Privacy",
+    tech: ["C++20", "OpenCV", "ONNX", "Linux"],
+    icon: Eye,
+    color: "emerald",
+    accentBg: "bg-emerald-500/10",
+    description: "Paranoia, but automated. A physical privacy daemon that monitors webcam feeds with computer vision and locks or blurs your screen when someone looks over your shoulder.",
+    link: "https://github.com/AshcrestHQ/Blindside",
+    updated: "Recently",
+    install: "cmake -B build && cmake --build build",
+    featured: true
+  },
+  {
     name: "Aegis",
     repoName: "Aegis",
-    category: "Bot",
-    tech: ["Rust", "PostgreSQL", "gRPC"],
+    category: "Security & Privacy",
+    tech: ["Java 26", "Virtual Threads", "Gemini AI", "Discord DAVE"],
     icon: Shield,
     color: "blue",
-    description: "Our custom moderation bot. We got tired of spam, so we built a zero-tolerance bouncer.",
-    link: "https://github.com/AshcrestHQ/aegis",
-    updated: "2h ago"
+    accentBg: "bg-blue-500/10",
+    description: "Universal Discord operations bot for security recon, moderation, anti-raid protection, Cyber RPG, AI assistance, and Discord DAVE E2EE with zero paid API dependencies.",
+    link: "https://github.com/AshcrestHQ/Aegis",
+    updated: "Recently",
+    featured: true
   },
   {
     name: "Janus",
-    repoName: "Janus",
-    category: "OS",
-    tech: ["TypeScript", "React", "Tailwind"],
-    icon: Terminal,
-    color: "primary",
-    description: "The core operating environment. It's fast, it's loud, and it runs everywhere.",
+    repoName: "janus",
+    category: "OS & Microkernels",
+    tech: ["Rust", "x86-64", "OSDev", "Capabilities"],
+    icon: Cpu,
+    color: "amber",
+    accentBg: "bg-amber-500/10",
+    description: "Security-first microkernel OS built from scratch in Rust. Features kernel-enforced capabilities, zero ambient authority, synchronous IPC, and preemptive scheduling.",
     link: "https://github.com/AshcrestHQ/janus",
-    updated: "1d ago"
+    updated: "Recently",
+    featured: true
   },
   {
     name: "Holocron",
     repoName: "Holocron",
-    category: "Tools",
-    tech: [],
-    icon: Code2,
-    color: "primary",
-    description: "A learn-by-doing CLI teaching security fundamentals and open source contribution skills side by side — gets you from zero to ready-to-PR on Janus or Aegis.",
+    category: "DevTools & CLI",
+    tech: ["Python 3", "Typer", "Git", "CLI"],
+    icon: Terminal,
+    color: "purple",
+    accentBg: "bg-purple-500/10",
+    description: "Interactive, gamified command-line application teaching cybersecurity fundamentals and open-source workflow practices (git branching, PR etiquette, XP, streaks).",
     link: "https://github.com/AshcrestHQ/Holocron",
-    updated: "2d ago",
-    install: "pip install -e . && holocron list"
+    updated: "Recently",
+    install: "pip install -e . && holocron list",
+    featured: true
+  },
+  {
+    name: "Terra",
+    repoName: "Terra",
+    category: "Web & Games",
+    tech: ["Next.js", "React Three Fiber", "Zustand", "PWA"],
+    icon: Sparkles,
+    color: "cyan",
+    accentBg: "bg-cyan-500/10",
+    description: "A 3D habit-tracking garden built with Next.js and React Three Fiber. Every habit kept grows a living plant through five visual stages set on a floating island with dynamic weather.",
+    link: "https://github.com/AshcrestHQ/Terra",
+    updated: "Recently",
+    featured: true
+  },
+  {
+    name: "Spectre",
+    repoName: "spectre",
+    category: "AI & Vision",
+    tech: ["Python", "PyQt6", "Gemini AI", "Computer Vision"],
+    icon: Monitor,
+    color: "indigo",
+    accentBg: "bg-indigo-500/10",
+    description: "Privacy-first AI screen assistant for Linux. Press a custom hotkey for instant multimodal AI analysis and insights on your active screen contents.",
+    link: "https://github.com/AshcrestHQ/spectre",
+    updated: "Recently",
+    install: "python3 -m spectre --hotkey Super+Alt+S"
+  },
+  {
+    name: "90s-Nostalgia",
+    repoName: "90s-nostalgia",
+    category: "Web & Games",
+    tech: ["HTML5", "Vanilla JS", "WebAudio API", "CSS3"],
+    icon: Tv,
+    color: "rose",
+    accentBg: "bg-rose-500/10",
+    description: "Single HTML file recreating late-90s internet as a working desktop OS. Live WebAudio synthesized 8-bit chiptune music, GeoCities site, guestbook, and Matrix rain mode.",
+    link: "https://github.com/AshcrestHQ/90s-nostalgia",
+    updated: "Recently"
   }
+];
+
+const CATEGORIES = [
+  "All Projects",
+  "OS & Microkernels",
+  "Security & Privacy",
+  "AI & Vision",
+  "DevTools & CLI",
+  "Web & Games"
 ];
 
 export default function Projects() {
   const [searchTerm, setSearchTerm] = useState("");
   const [techFilter, setTechFilter] = useState("");
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("All Projects");
   const [projects, setProjects] = useState<Project[]>(INITIAL_PROJECTS);
+  const [copiedSnippet, setCopiedSnippet] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchTimestamps() {
-      const cacheKey = "ashcresthq_repos_timestamps_v3";
+    async function fetchOrgRepos() {
+      const cacheKey = "ashcresthq_org_repos_v4";
       const cached = sessionStorage.getItem(cacheKey);
-      
-      let timestampsMap: Record<string, string> = {};
 
       if (cached) {
-        const parsed = JSON.parse(cached);
-        if (Date.now() - parsed.timestamp < 3600 * 1000) {
-          timestampsMap = parsed.data;
-          setProjects(INITIAL_PROJECTS.map(p => ({
-            ...p,
-            updated: timestampsMap[p.repoName || ""] ? timeAgo(timestampsMap[p.repoName || ""]) : p.updated
-          })));
-          return;
+        try {
+          const parsed = JSON.parse(cached);
+          if (Date.now() - parsed.timestamp < 1800 * 1000) {
+            mergeRepoData(parsed.data);
+            return;
+          }
+        } catch (e) {
+          console.error("Cache parsing error:", e);
         }
       }
 
-      await Promise.all(
-        INITIAL_PROJECTS.map(async (p) => {
-          if (!p.repoName) return;
-          try {
-            const res = await fetch(`https://api.github.com/repos/AshcrestHQ/${p.repoName}`);
-            if (res.ok) {
-              const data = await res.json();
-              if (data.pushed_at) {
-                timestampsMap[p.repoName] = data.pushed_at;
-              }
-            }
-          } catch (e) {
-            console.error("Failed to fetch timestamp for:", p.repoName, e);
+      try {
+        const res = await fetch("https://api.github.com/orgs/AshcrestHQ/repos");
+        if (res.ok) {
+          const reposData = await res.json();
+          if (Array.isArray(reposData)) {
+            sessionStorage.setItem(cacheKey, JSON.stringify({
+              timestamp: Date.now(),
+              data: reposData
+            }));
+            mergeRepoData(reposData);
           }
+        }
+      } catch (e) {
+        console.error("Failed to fetch AshcrestHQ repos:", e);
+      }
+    }
+
+    function mergeRepoData(apiRepos: any[]) {
+      const repoMap = new Map(apiRepos.map(r => [r.name.toLowerCase(), r]));
+
+      setProjects(prevProjects => 
+        prevProjects.map(p => {
+          const apiRepo = repoMap.get(p.repoName.toLowerCase());
+          if (!apiRepo) return p;
+
+          return {
+            ...p,
+            stars: apiRepo.stargazers_count ?? p.stars,
+            forks: apiRepo.forks_count ?? p.forks,
+            updated: apiRepo.pushed_at ? timeAgo(apiRepo.pushed_at) : p.updated,
+            description: p.description || apiRepo.description
+          };
         })
       );
-      
-      sessionStorage.setItem(cacheKey, JSON.stringify({
-        timestamp: Date.now(),
-        data: timestampsMap
-      }));
-      
-      setProjects(INITIAL_PROJECTS.map(p => ({
-        ...p,
-        updated: timestampsMap[p.repoName || ""] ? timeAgo(timestampsMap[p.repoName || ""]) : p.updated
-      })));
     }
-    fetchTimestamps();
+
+    fetchOrgRepos();
   }, []);
 
-  const categories = ["All Projects", "Bots", "OS", "Tools", "Libraries"];
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedSnippet(text);
+    setTimeout(() => setCopiedSnippet(null), 2000);
+  };
 
   const filteredProjects = projects.filter(p => {
-    const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTech = p.tech.some(t => t.toLowerCase().includes(techFilter.toLowerCase()));
-    const matchesCat = activeCategory === "all" || activeCategory.toLowerCase() === p.category.toLowerCase() + "s";
-    return matchesSearch && (techFilter === "" || matchesTech) && matchesCat;
+    const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          p.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesTech = techFilter === "" || p.tech.some(t => t.toLowerCase().includes(techFilter.toLowerCase()));
+    const matchesCat = activeCategory === "All Projects" || p.category === activeCategory;
+    return matchesSearch && matchesTech && matchesCat;
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }} 
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-24 mt-12 pl-6 md:pl-10 border-l border-primary/30 max-w-2xl"
+        className="mb-14 pl-6 md:pl-10 border-l-2 border-primary/40 max-w-3xl"
       >
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono font-bold text-primary tracking-wider uppercase mb-4">
+          Open Source Arsenal • {projects.length} Repositories
+        </div>
         <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter text-white">The Arsenal</h1>
-        <p className="text-xl text-gray-400 font-medium leading-loose">Everything we've built, open sourced, and shipped to production. Poke around.</p>
+        <p className="text-lg md:text-xl text-gray-400 font-medium leading-relaxed">
+          Free, open-source software maintained by AshcrestHQ. Security tools, operating systems, AI assistants, and interactive web environments.
+        </p>
       </motion.div>
 
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-20 pb-8 border-b border-white/10">
-        <div className="flex gap-4 overflow-x-auto w-full lg:w-auto pb-4 lg:pb-0 scrollbar-hide">
-          {categories.map(cat => (
+      {/* Filter and Search Bar */}
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-12 pb-6 border-b border-white/10">
+        
+        {/* Category Tabs Container - Clean Unclipped Wrap */}
+        <div className="flex flex-wrap gap-2.5 items-center w-full lg:w-auto">
+          {CATEGORIES.map(cat => (
             <motion.button
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
               key={cat}
-              onClick={() => setActiveCategory(cat === "All Projects" ? "all" : cat)}
-              className={`px-6 py-3 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors ${
-                (activeCategory === "all" && cat === "All Projects") || activeCategory === cat
-                  ? "bg-primary text-black"
-                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
+                activeCategory === cat
+                  ? "bg-primary text-black shadow-lg shadow-primary/20 font-extrabold"
+                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5 hover:border-white/10"
               }`}
             >
               {cat}
@@ -152,104 +261,177 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-          <div className="relative flex-1 lg:w-64">
+
+        {/* Search Inputs & Active Filter Stats */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+          { (techFilter !== "" || searchTerm !== "" || activeCategory !== "All Projects") && (
+            <button
+              onClick={() => { setSearchTerm(""); setTechFilter(""); setActiveCategory("All Projects"); }}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-xs font-mono text-gray-400 hover:text-white transition-colors"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              Reset Filters
+            </button>
+          )}
+
+          <div className="relative flex-1 lg:w-52">
             <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Tech stack..."
+              placeholder="Filter tech stack..."
               value={techFilter}
               onChange={(e) => setTechFilter(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-[13px] font-medium focus:outline-none focus:border-primary/40 transition-colors focus:bg-white/10 text-white"
+              className="w-full bg-white/5 border border-white/10 rounded-xl pl-11 pr-4 py-2.5 text-xs font-medium focus:outline-none focus:border-primary/40 transition-colors focus:bg-white/10 text-white placeholder-gray-500"
             />
           </div>
-          <div className="relative flex-1 lg:w-64">
+
+          <div className="relative flex-1 lg:w-60">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search repo..."
+              placeholder="Search repository..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-[13px] font-medium focus:outline-none focus:border-primary/40 transition-colors focus:bg-white/10 text-white"
+              className="w-full bg-white/5 border border-white/10 rounded-xl pl-11 pr-4 py-2.5 text-xs font-medium focus:outline-none focus:border-primary/40 transition-colors focus:bg-white/10 text-white placeholder-gray-500"
             />
           </div>
         </div>
       </div>
 
-      <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 pb-20">
+      {/* Filter Counter Badge */}
+      <div className="flex justify-between items-center mb-8 text-xs font-mono text-gray-400">
+        <span>Showing <strong className="text-white">{filteredProjects.length}</strong> of {projects.length} repositories</span>
+        {techFilter && <span className="bg-primary/10 text-primary px-2.5 py-1 rounded-md border border-primary/20">Tech filter: {techFilter}</span>}
+      </div>
+
+      {/* Projects Grid */}
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-4">
         <AnimatePresence>
-          {filteredProjects.map((project, i) => (
-            <motion.div
-              layout
-              key={project.name}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              whileHover={{ scale: 1.02, y: -4 }}
-              whileTap={{ scale: 0.98, y: 0 }}
-              transition={{ type: "spring", bounce: 0.2, duration: 0.5, delay: i * 0.05 }}
-              className={`glass-card-organic p-6 md:p-10 cursor-pointer group flex flex-col relative overflow-hidden break-inside-avoid ${
-                project.status ? 'border-dashed border-gray-600/30 opacity-60 hover:opacity-100' : `border-t-${project.color === 'blue' ? 'blue-500' : project.color === 'primary' ? 'primary' : 'gray-400'}/20`
-              }`}
-              onClick={() => window.location.href = project.link}
-            >
-              {project.color === 'blue' && <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/10 rounded-full blur-[60px] -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>}
-              {project.color === 'primary' && <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-[60px] -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>}
-              
-              <div className="relative z-10 flex justify-between items-start mb-10">
-                <div className="flex items-center gap-5">
-                  <project.icon className={`w-7 h-7 ${project.color === 'blue' ? 'text-blue-400' : project.color === 'primary' ? 'text-primary' : 'text-gray-400'}`} />
-                  <h3 className="text-2xl font-black tracking-tight text-white">{project.name}</h3>
-                </div>
-                <span className="px-3 py-1 bg-white/5 rounded-md text-[10px] font-bold uppercase tracking-widest text-gray-400">{project.category}</span>
-              </div>
+          {filteredProjects.map((project, i) => {
+            const Icon = project.icon;
 
-              {project.status ? (
-                <div className="flex-grow flex items-center justify-center relative z-10 py-12">
-                  <span className="px-5 py-2.5 bg-black/40 border border-white/5 rounded-xl text-xs font-black uppercase tracking-widest text-red-400/80">{project.status}</span>
-                </div>
-              ) : (
-                <p className="text-gray-400 text-[15px] mb-12 flex-grow font-medium relative z-10 leading-loose">{project.description}</p>
-              )}
+            return (
+              <motion.div
+                layout
+                key={project.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", bounce: 0.15, duration: 0.4, delay: i * 0.04 }}
+                className="glass-card-organic p-8 cursor-pointer group flex flex-col justify-between relative overflow-hidden border border-white/10 hover:border-white/20 transition-all rounded-2xl"
+                onClick={() => window.open(project.link, "_blank")}
+              >
+                {/* Background Ambient Glow */}
+                <div className={`absolute top-0 right-0 w-48 h-48 ${project.accentBg} rounded-full blur-[70px] -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`}></div>
 
-              {project.install && (
-                <div className="mb-6 relative z-10">
-                  <code className="block w-full bg-black/30 border border-white/10 rounded-lg p-3 text-xs text-gray-300 font-mono overflow-x-auto whitespace-pre">
-                    {project.install}
-                  </code>
-                </div>
-              )}
-
-              {!project.status && (
-                <div className="flex flex-wrap gap-2 mb-10 mt-auto relative z-10">
-                  {project.tech.map(t => (
-                    <span key={t} className="px-3 py-1.5 bg-white/5 rounded-md text-[11px] font-bold text-gray-300 tracking-wider uppercase">{t}</span>
-                  ))}
-                </div>
-              )}
-
-              <div className="flex justify-between items-end pt-6 border-t border-white/10 relative z-10">
-                <div className="flex flex-col gap-3">
-                  <div className="flex gap-4 text-[11px] text-gray-500 font-bold uppercase tracking-widest">
-                    <span>Updated {project.updated}</span>
+                <div>
+                  {/* Top Bar: Icon + Category */}
+                  <div className="flex justify-between items-start mb-6 relative z-10">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-black tracking-tight text-white group-hover:text-primary transition-colors flex items-center gap-2">
+                          {project.name}
+                          <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
+                        </h3>
+                        <span className="text-[11px] font-mono text-gray-500">AshcrestHQ/{project.repoName}</span>
+                      </div>
+                    </div>
                   </div>
-                  {project.name === 'Aegis' && (
-                    <div className="flex gap-3 text-[10px] font-bold uppercase tracking-widest mt-1">
-                      <Link href="/aegis/privacy" className="text-gray-500 hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>Privacy Policy</Link>
-                      <span className="text-gray-700">•</span>
-                      <Link href="/aegis/terms" className="text-gray-500 hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>Terms of Service</Link>
+
+                  {/* Description */}
+                  <p className="text-gray-300 text-sm mb-6 font-normal leading-relaxed relative z-10">
+                    {project.description}
+                  </p>
+
+                  {/* Terminal Copy Snippet */}
+                  {project.install && (
+                    <div className="mb-6 relative z-10" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex items-center justify-between bg-black/50 border border-white/10 rounded-xl p-3 text-xs font-mono text-gray-300">
+                        <span className="truncate mr-2 text-[11px]">{project.install}</span>
+                        <button
+                          onClick={() => copyToClipboard(project.install!)}
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors flex-shrink-0"
+                          title="Copy install command"
+                        >
+                          {copiedSnippet === project.install ? (
+                            <Check className="w-3.5 h-3.5 text-emerald-400" />
+                          ) : (
+                            <Copy className="w-3.5 h-3.5" />
+                          )}
+                        </button>
+                      </div>
                     </div>
                   )}
+
+                  {/* Interactive Tech Stack Badges */}
+                  <div className="flex flex-wrap gap-2 mb-8 relative z-10" onClick={(e) => e.stopPropagation()}>
+                    {project.tech.map(t => (
+                      <button
+                        key={t}
+                        onClick={() => setTechFilter(techFilter === t ? "" : t)}
+                        className={`px-2.5 py-1 border rounded-md text-[11px] font-mono font-medium transition-all ${
+                          techFilter.toLowerCase() === t.toLowerCase()
+                            ? "bg-primary/20 border-primary text-primary"
+                            : "bg-white/5 border-white/5 hover:border-white/20 text-gray-400 hover:text-white"
+                        }`}
+                      >
+                        {t}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex gap-4 text-gray-400 self-end">
-                  <BookOpen className="w-5 h-5 hover:text-white transition-colors" />
-                  <Code2 className="w-5 h-5 hover:text-white transition-colors" />
+
+                {/* Footer Metadata */}
+                <div className="pt-5 border-t border-white/10 flex justify-between items-center relative z-10 text-xs text-gray-400 font-medium">
+                  <div className="flex items-center gap-4">
+                    {project.stars !== undefined && (
+                      <span className="flex items-center gap-1.5 text-amber-400 font-mono font-bold">
+                        <Star className="w-3.5 h-3.5 fill-amber-400" />
+                        {project.stars}
+                      </span>
+                    )}
+                    {project.forks !== undefined && project.forks > 0 && (
+                      <span className="flex items-center gap-1 font-mono text-gray-400">
+                        <GitFork className="w-3.5 h-3.5" />
+                        {project.forks}
+                      </span>
+                    )}
+                    <span className="text-[11px] text-gray-500 font-mono">Updated {project.updated}</span>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    {project.name === 'Aegis' && (
+                      <div className="flex gap-2 text-[10px] font-mono text-gray-500 mr-1">
+                        <Link href="/aegis/privacy" className="hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>Privacy</Link>
+                        <span>•</span>
+                        <Link href="/aegis/terms" className="hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>Terms</Link>
+                      </div>
+                    )}
+                    <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
       </motion.div>
+
+      {/* Empty State */}
+      {filteredProjects.length === 0 && (
+        <div className="text-center py-20 border border-white/10 rounded-2xl glass-card-organic">
+          <p className="text-gray-400 text-base mb-4 font-mono">No repositories match your active search filters.</p>
+          <button 
+            onClick={() => { setSearchTerm(""); setTechFilter(""); setActiveCategory("All Projects"); }}
+            className="px-6 py-2.5 rounded-full bg-primary text-black font-bold text-xs uppercase tracking-wider hover:bg-primary-hover transition-colors shadow-lg shadow-primary/20"
+          >
+            Reset All Filters
+          </button>
+        </div>
+      )}
     </div>
   );
 }

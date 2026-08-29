@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Docs() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-32">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-6">
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }} 

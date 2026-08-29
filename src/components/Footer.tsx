@@ -3,7 +3,7 @@ import { Code2, MessagesSquare, Mail, Users } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto py-24 px-4 md:px-12 relative z-10 overflow-hidden">
+    <footer className="mt-auto pt-4 pb-12 px-4 md:px-12 relative z-10 overflow-hidden">
       <div className="max-w-6xl mx-auto glass-card-organic p-12 md:p-20 flex flex-col md:flex-row justify-between items-start gap-16 md:gap-8">
         <div className="flex flex-col items-start gap-6 max-w-sm">
           <div className="font-black text-3xl tracking-tighter text-white">

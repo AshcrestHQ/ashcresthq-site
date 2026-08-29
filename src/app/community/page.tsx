@@ -49,7 +49,7 @@ export default function Community() {
         initial={{ opacity: 0, y: 30 }} 
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="text-left max-w-4xl mb-32 mt-16 md:ml-12"
+        className="text-left max-w-4xl mb-16 mt-8 md:ml-12"
       >
         <h1 className="text-5xl md:text-[6rem] font-black mb-10 tracking-tighter relative inline-block text-white leading-none">
           The Network.
@@ -57,7 +57,7 @@ export default function Community() {
         <p className="text-xl md:text-2xl text-gray-400 leading-loose font-medium max-w-2xl">
           AshcrestHQ is distributed. We collaborate in the open, build ruthless infrastructure, and welcome engineers who actually want to ship things.
         </p>
-        <div className="flex flex-col sm:flex-row gap-6 mt-16">
+        <div className="flex flex-col sm:flex-row gap-6 mt-12">
           <Link href="https://discord.gg/35ubQnrzD" className="bg-white text-black text-sm font-bold px-10 py-5 rounded-full hover:bg-gray-200 transition-colors shadow-[0_10px_30px_-10px_rgba(255,255,255,0.2)] text-center flex items-center justify-center gap-3">
             Join Discord
             <ArrowRight className="w-4 h-4" />
@@ -73,7 +73,7 @@ export default function Community() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-        className="flex flex-col md:flex-row items-stretch justify-center gap-6 mb-40 relative z-10"
+        className="flex flex-col md:flex-row items-stretch justify-center gap-6 mb-16 relative z-10"
       >
         {stats.map((stat, i) => (
           <div 
@@ -102,7 +102,7 @@ export default function Community() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="glass-card-organic rounded-[2rem] p-16 md:p-24 flex flex-col lg:flex-row items-center gap-20 relative overflow-hidden mb-32"
+        className="glass-card-organic rounded-[2rem] p-16 md:p-24 flex flex-col lg:flex-row items-center gap-20 relative overflow-hidden mb-6"
       >
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -ml-32 -mt-32 pointer-events-none"></div>
         

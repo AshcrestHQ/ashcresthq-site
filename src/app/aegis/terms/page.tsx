@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function TermsOfService() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 mb-20">
-      <div className="mb-20 border-l border-primary/30 pl-8">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-6">
+      <div className="mb-12 border-l border-primary/30 pl-8">
         <h1 className="text-4xl md:text-[3.5rem] font-black mb-6 tracking-tighter text-white leading-none">Terms of Service — Aegis</h1>
         <p className="text-gray-500 font-bold uppercase tracking-widest text-[11px]">Last updated: August 5, 2026</p>
       </div>
